@@ -21,6 +21,7 @@ const Footer = () => {
       mt="5em"
       p="0"
       border="none"
+      zIndex="-1"
     >
       <Text color="gray.300" mb="8em" letterSpacing="widest">
         A Chainlink 2022 Hackathon Project
@@ -35,7 +36,6 @@ const Footer = () => {
         bgColor="#365AD2"
         borderTopRadius="50%"
         w="full"
-        zIndex="-2"
       >
         <Image
           src="/vmt_logo_white.svg"
@@ -43,7 +43,7 @@ const Footer = () => {
           mt="-4em"
           boxSize="150px"
         />
-        <Flex flexDirection="column">
+        <Flex flexDirection="column" >
           <Flex>
             <Link
               href="https://github.com/vmtree/chainlink-vmt/"

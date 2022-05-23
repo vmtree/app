@@ -63,7 +63,7 @@ const Hero = ({ handleVMTreeCreation }) => {
           onClick={onOpen}
           mb="1em"
           borderRadius={18}
-          zIndex="-1"
+          zIndex="0"
         >
           Deploy A New VMTree
         </Button>
@@ -121,7 +121,12 @@ const Hero = ({ handleVMTreeCreation }) => {
           </ModalContent>
         </Modal>
 
-        <Divider borderColor="blackAlpha.300" width="50%" mb="5em" zIndex="-1"/>
+        <Divider
+          borderColor="blackAlpha.300" 
+          width="50%" 
+          mb="5em" 
+          // zIndex="-1"
+        />
       </Flex>
     </Box>
   );

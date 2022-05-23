@@ -10,7 +10,7 @@ const NavBar = (props) => {
   console.log(pageType);
 
   return (
-    <NavBarContainer {...props}>
+    <NavBarContainer {...props} zIndex="100">
       <Logo w="100px" />
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       <MenuLinks isOpen={isOpen} pageType={pageType} />
