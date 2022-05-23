@@ -351,6 +351,7 @@ const ExploreVMTs = (props) => {
               color="#fff"
               rightIcon={<ChevronDownIcon />}
               _hover={{ background: "#fff", color: "#365AD2" }}
+              zIndex="-1"
             >
               See More
             </Button>

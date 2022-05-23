@@ -35,6 +35,7 @@ const Footer = () => {
         bgColor="#365AD2"
         borderTopRadius="50%"
         w="full"
+        zIndex="-2"
       >
         <Image
           src="/vmt_logo_white.svg"

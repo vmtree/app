@@ -103,8 +103,10 @@ const SecondButton = ({ pageType }) => {
   }
   return (
     <ConnectButton
+      color="blue"
       moralisAuth={false}
       signingMessage="Sign to login to VMTree"
+      zIndex="2147483647"
     />
   );
 };
