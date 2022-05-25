@@ -24,8 +24,10 @@ import {
 import { useState } from "react";
 import { Icon, Input, Typography } from "web3uikit";
 
+
 import { useWeb3Contract } from "react-moralis";
 import { useMoralis, useMoralisWeb3ApiCall } from "react-moralis";
+
 import { abi_deploy_tree } from "../constants/abi";
 import { useMoralisWeb3Api, useWeb3ExecuteFunction } from "react-moralis";
 
@@ -41,7 +43,6 @@ function encodeData(controller, name) {
 
 // chainlink token address
 const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709"; //TODO: move out later
-
 
 const Hero = ({ handleVMTreeCreation }) => {
   // state
@@ -132,10 +133,6 @@ const Hero = ({ handleVMTreeCreation }) => {
 
   const initialRef = React.useRef();
   const finalRef = React.useRef();
-
-  // const { authenticate, isAuthenticated, user } = useMoralis();
-  // // const currUser = Moralis.User.current()
-  // // var wallet = user.get("ethAddress");
 
   return (
     <Box
@@ -238,11 +235,11 @@ const Hero = ({ handleVMTreeCreation }) => {
                   borderWidth: "1.5px",
                 }}
                 onClick={() => {
-                  handleCreateTree()
+                  handleCreateTree();
                 }}
               >
-                      Deploy It!
-                    </Button>
+                Deploy It!
+              </Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
