@@ -22,8 +22,11 @@ import Head from "next/head";
 export default function Dapp() {
   const { isAuthenticated, authenticate, user, logout, isLoggingOut } =
     useMoralis();
+
+  // [contract] get list: https://github.com/vmtree/solidity/blob/main/contracts/Arborist.sol#L253
+  // [contract] deploy & manage trees: https://github.com/vmtree/solidity/blob/main/contracts/interfaces/ILinkToken.sol#L16
   
-  const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709";    //TODO: move out later
+  const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709"; //TODO: move out later
 
   const { runContractFunction } = useWeb3Contract({
     abi: abi_deploy_tree,
@@ -46,7 +49,7 @@ export default function Dapp() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Box w="100vw" maxW="100vw" mt="0" m="auto">
-        <NavBar as="header" position="fixed" w="100%" pageType="dapp_page"/>
+        <NavBar as="header" position="fixed" w="100%" pageType="dapp_page" />
         <Hero handleVMTreeCreation={handleVMTreeCreation} />
         <ManageVMTs />
         <ExploreVMTs />

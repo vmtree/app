@@ -24,14 +24,18 @@ import {
 import { useState } from "react";
 import { Icon, Input, Typography } from "web3uikit";
 
-import { useWeb3Contract } from "react-moralis";
-import { useMoralisWeb3ApiCall } from "react-moralis";
+import {
+  useWeb3Contract,
+  useMoralisWeb3Api,
+  useWeb3ExecuteFunction,
+} from "react-moralis";
 import { abi_deploy_tree } from "../constants/abi";
 
-import { useMoralisWeb3Api } from "react-moralis";
 const { defaultAbiCoder } = require("@ethersproject/abi/");
 
 const Hero = ({ handleVMTreeCreation }) => {
+  const contractProcessor = useWeb3ExecuteFunction();
+
   const [name, setName] = useState("name");
   const handleNameChange = (e) => setName(e.target.value);
   const isNameError = name === "";
@@ -43,75 +47,54 @@ const Hero = ({ handleVMTreeCreation }) => {
   const handleControllerChange = (e) => setController(e.target.value);
   const isControllerError = controller === "";
 
-  function encodeDeploy(controller, name) {
-    return defaultAbiCoder.encode(
-      ["address", "string"],
-      [controller, name] //TODO: values from form
-    );
-  }
+  // function encodeDeploy(controller, name) {
+  //   return defaultAbiCoder.encode(
+  //     ["address", "string"],
+  //     [controller, name] 
+  //   );
+  // }
 
-  const { native } = useMoralisWeb3Api();
 
-  // const params = (controller, name) => ({
+  // const options = (controller, name) => ({
   //   chain: "rinkeby",
+  //   // address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
   //   address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
   //   function_name: "transferAndCall",
   //   abi: abi_deploy_tree,
   //   params: {
   //     to: "0xff41a716d5d8555491B3e58ae051765369F19148",
   //     value: 1,
-  //     data: encodeDeploy(controller, name)
-  //    },
-  // })
+  //     data: encodeDeploy(controller, name),
+  //   },
+  // });
 
-  const params = {
-    chain: "rinkeby",
-    address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
-    function_name: "transferAndCall",
-    abi: abi_deploy_tree,
-    params: {
-      to: "0xff41a716d5d8555491B3e58ae051765369F19148",
-      value: "1",
-      data: "",
-    },
-  };
 
-  const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709"; //TODO: move out later
-
-  const { runContractFunction } = useWeb3Contract({
-   chain: "rinkeby",
-    address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
-    function_name: "transferAndCall",
-    abi: abi_deploy_tree,
-    params: {
-      to: "0xff41a716d5d8555491B3e58ae051765369F19148",
-      value: "1",
-      data: "",
-    },
-  });
-
-  const { fetch, data, error, isLoading } = useMoralisWeb3ApiCall(
-    native.runContractFunction,
-    { ...params }
-    
-  );
-
-  function handleCreateTree() {
+  async function handleCreateTree() {
     console.log("name: ", name);
     console.log("controller: ", controller);
-    // fetch({ params: params });
-    runContractFunction()
-    console.log("data: ", data)
+
+    const options = {
+      chain: "rinkeby",
+      contractAddress: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
+      function_name: "transferAndCall",
+      abi: abi_deploy_tree,
+      params: {
+        to: "0xff41a716d5d8555491B3e58ae051765369F19148",
+        value: 1,
+        data: "",
+      },
+    };
+
+    let res = await contractProcessor.fetch({
+      params: options,
+    });
+    console.log("res: ", res)
   }
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const initialRef = React.useRef();
   const finalRef = React.useRef();
-
-  // const { authenticate, isAuthenticated, user } = useMoralis();
-  // // const currUser = Moralis.User.current()
-  // // var wallet = user.get("ethAddress");
 
   return (
     <Box
@@ -214,11 +197,11 @@ const Hero = ({ handleVMTreeCreation }) => {
                   borderWidth: "1.5px",
                 }}
                 onClick={() => {
-                  handleCreateTree()
+                  handleCreateTree();
                 }}
               >
-                      Deploy It!
-                    </Button>
+                Deploy It!
+              </Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
