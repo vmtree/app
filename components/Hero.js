@@ -25,84 +25,106 @@ import { useState } from "react";
 import { Icon, Input, Typography } from "web3uikit";
 
 import { useWeb3Contract } from "react-moralis";
-import { useMoralisWeb3ApiCall } from "react-moralis";
+import { useMoralis, useMoralisWeb3ApiCall } from "react-moralis";
 import { abi_deploy_tree } from "../constants/abi";
+import { useMoralisWeb3Api, useWeb3ExecuteFunction } from "react-moralis";
 
-import { useMoralisWeb3Api } from "react-moralis";
-const { defaultAbiCoder } = require("@ethersproject/abi/");
+import { defaultAbiCoder }  from "@ethersproject/abi/";
+import { parseUnits } from "@ethersproject/units";
+
+// transferAndCall `data` encoder
+function encodeData(controller, name) {
+  const d = defaultAbiCoder.encode(["address", "string"], [controller, name]);
+  console.log(d);
+  return d;
+}
+
+// chainlink token address
+const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709"; //TODO: move out later
+
 
 const Hero = ({ handleVMTreeCreation }) => {
+  // state
   const [name, setName] = useState("name");
-  const handleNameChange = (e) => setName(e.target.value);
-  const isNameError = name === "";
-
   const [controller, setController] = useState(
     "0x0000000000000000000000000000000000000000"
   );
-
+  const [links, setLinks] = useState("1")
+  // form handlers
+  const handleNameChange = (e) => setName(e.target.value);
   const handleControllerChange = (e) => setController(e.target.value);
-  const isControllerError = controller === "";
-
-  function encodeDeploy(controller, name) {
-    return defaultAbiCoder.encode(
-      ["address", "string"],
-      [controller, name] //TODO: values from form
-    );
+  const handleLinksChange = (e) => {
+      setLinks(e.target.value || "1");
   }
 
-  const { native } = useMoralisWeb3Api();
+  // form error validators
+  const isNameError = name === "";
+  const isControllerError = controller === "";
+  const isLinksError = links ? parseUnits(links, 18).lt(parseUnits("1")) : true;
 
-  // const params = (controller, name) => ({
-  //   chain: "rinkeby",
-  //   address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
-  //   function_name: "transferAndCall",
-  //   abi: abi_deploy_tree,
-  //   params: {
-  //     to: "0xff41a716d5d8555491B3e58ae051765369F19148",
-  //     value: 1,
-  //     data: encodeDeploy(controller, name)
-  //    },
-  // })
-
-  const params = {
+  // format the transaction data for metamask signature
+  const params = () => ({
     chain: "rinkeby",
-    address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
-    function_name: "transferAndCall",
+    contractAddress: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
+    functionName: "transferAndCall",
     abi: abi_deploy_tree,
     params: {
-      to: "0xff41a716d5d8555491B3e58ae051765369F19148",
-      value: "1",
-      data: "",
-    },
-  };
-
-  const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709"; //TODO: move out later
-
-  const { runContractFunction } = useWeb3Contract({
-   chain: "rinkeby",
-    address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
-    function_name: "transferAndCall",
-    abi: abi_deploy_tree,
-    params: {
-      to: "0xff41a716d5d8555491B3e58ae051765369F19148",
-      value: "1",
-      data: "",
-    },
+      _to: "0xff41a716d5d8555491b3e58ae051765369f19148",
+      _value: parseUnits(links, 18),
+      _data: encodeData(controller, name)
+     },
   });
 
-  const { fetch, data, error, isLoading } = useMoralisWeb3ApiCall(
-    native.runContractFunction,
-    { ...params }
-    
-  );
+  const { Moralis } = useMoralis();
 
-  function handleCreateTree() {
-    console.log("name: ", name);
-    console.log("controller: ", controller);
-    // fetch({ params: params });
-    runContractFunction()
-    console.log("data: ", data)
+  async function handleCreateTree() {
+    try {
+        const asdf = await Moralis.executeFunction(params());
+        console.log(asdf);
+        // console.log(data);
+    } catch(err) {
+        console.log(err);
+    }
   }
+
+  //   const { native } = useMoralisWeb3Api();
+//   const params = {
+//     chain: "rinkeby",
+//     address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
+//     function_name: "transferAndCall",
+//     abi: abi_deploy_tree,
+//     params: {
+//       to: "0xff41a716d5d8555491B3e58ae051765369F19148",
+//       value: "1",
+//       data: "",
+//     },
+//   };
+
+//   const { runContractFunction } = useWeb3Contract({
+//    chain: "rinkeby",
+//     address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
+//     function_name: "transferAndCall",
+//     abi: abi_deploy_tree,
+//     params: {
+//       to: "0xff41a716d5d8555491B3e58ae051765369F19148",
+//       value: "1",
+//       data: "",
+//     },
+//   });
+
+//   const { fetch, data, error, isLoading } = useMoralisWeb3ApiCall(
+//     native.runContractFunction,
+//     { ...params }
+    
+//   );
+
+//   function handleCreateTree() {
+//     console.log("name: ", name);
+//     console.log("controller: ", controller);
+//     // fetch({ params: params });
+//     runContractFunction()
+//     console.log("data: ", data)
+//   }
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -189,8 +211,8 @@ const Hero = ({ handleVMTreeCreation }) => {
                   placeholder="Enter #LINK"
                   width="32em"
                   name="links"
-                  value="1"
-                  isDisabled="true"
+                  value={links}
+                  onChange={handleLinksChange}
                 />
               </FormControl>
             </ModalBody>

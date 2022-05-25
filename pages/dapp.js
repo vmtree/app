@@ -16,13 +16,13 @@ import ExploreVMTs from "../components/ExploreVMTs";
 import Footer from "../components/Footer";
 import { ConnectButton } from "web3uikit";
 import { useWeb3Contract } from "react-moralis";
+
 import { abi_deploy_tree } from "../constants/abi";
 import Head from "next/head";
 
 export default function Dapp() {
   const { isAuthenticated, authenticate, user, logout, isLoggingOut } =
     useMoralis();
-  
   const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709";    //TODO: move out later
 
   const { runContractFunction } = useWeb3Contract({
@@ -30,7 +30,9 @@ export default function Dapp() {
     contractAddress: address_deploy_trees,
     functionName: "transferAndCall",
     params: {
-      _param1: 1, //TODO: put me
+      to: 1,
+      value: 1,
+      data: ""
     },
   });
 
