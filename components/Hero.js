@@ -79,9 +79,11 @@ const Hero = ({ handleVMTreeCreation }) => {
 
   async function handleCreateTree() {
     try {
-        const asdf = await Moralis.executeFunction(params());
-        console.log(asdf);
-        // console.log(data);
+        const tx = await Moralis.executeFunction(params());
+        console.log(tx);
+        console.log(tx.hash);
+        const receipt = await tx.wait();
+        console.log(receipt);
     } catch(err) {
         console.log(err);
     }
