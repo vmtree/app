@@ -20,6 +20,7 @@ import Footer from "../components/Footer";
 import Head from "next/head";
 
 export default function Dapp() {
+<<<<<<< HEAD
 //   const { isAuthenticated, authenticate, user, logout, isLoggingOut } =
 //     useMoralis();
 //   const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709";    //TODO: move out later
@@ -34,6 +35,26 @@ export default function Dapp() {
 //       data: ""
 //     },
 //   });
+=======
+  const { isAuthenticated, authenticate, user, logout, isLoggingOut } =
+    useMoralis();
+  
+  const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709";    //TODO: move out later
+
+  // [contract] get list: https://github.com/vmtree/solidity/blob/main/contracts/Arborist.sol#L253
+  // [contract] deploy & manage trees: https://github.com/vmtree/solidity/blob/main/contracts/interfaces/ILinkToken.sol#L16
+
+  const { runContractFunction } = useWeb3Contract({
+    abi: abi_deploy_tree,
+    contractAddress: address_deploy_trees,
+    functionName: "transferAndCall",
+    params: {
+      to: 1,
+      value: 1,
+      data: ""
+    },
+  });
+>>>>>>> 92c16392e14b5c117cac623d1bd956650d991a12
 
 //   const handleVMTreeCreation = () => {
 //     runContractFunction();
@@ -47,8 +68,13 @@ export default function Dapp() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Box w="100vw" maxW="100vw" mt="0" m="auto">
+<<<<<<< HEAD
         <NavBar as="header" position="fixed" w="100%" pageType="dapp_page"/>
         <Hero />
+=======
+        <NavBar as="header" position="fixed" w="100%" pageType="dapp_page" />
+        <Hero handleVMTreeCreation={handleVMTreeCreation} />
+>>>>>>> 92c16392e14b5c117cac623d1bd956650d991a12
         <ManageVMTs />
         <ExploreVMTs />
         <Footer />
