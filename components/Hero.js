@@ -24,18 +24,9 @@ import {
 import { useState } from "react";
 import { Icon, Input, Typography } from "web3uikit";
 
-<<<<<<< HEAD
 import { useMoralis } from "react-moralis";
 import { arboristAbi, linkTokenAbi } from "../constants/abi";
 import { arboristAddress, linkTokenAddress } from "../constants/addresses";
-=======
-
-import { useWeb3Contract } from "react-moralis";
-import { useMoralis, useMoralisWeb3ApiCall } from "react-moralis";
-
-import { abi_deploy_tree } from "../constants/abi";
-import { useMoralisWeb3Api, useWeb3ExecuteFunction } from "react-moralis";
->>>>>>> 92c16392e14b5c117cac623d1bd956650d991a12
 
 import { Interface, defaultAbiCoder }  from "@ethersproject/abi/";
 import { parseUnits } from "@ethersproject/units";
@@ -47,15 +38,10 @@ function encodeData(controller, name) {
   return d;
 }
 
-<<<<<<< HEAD
 function parseDeployLog(receipt) { 
     const iface = new Interface(arboristAbi);
     return iface.parseLog(receipt.logs[2]).args;
 }
-=======
-// chainlink token address
-const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709"; //TODO: move out later
->>>>>>> 92c16392e14b5c117cac623d1bd956650d991a12
 
 const Hero = ({ handleVMTreeCreation }) => {
   // state
@@ -76,7 +62,7 @@ const Hero = ({ handleVMTreeCreation }) => {
   const isControllerError = controller === "";
   const isLinksError = links ? parseUnits(links, 18).lt(parseUnits("1")) : true;
 
-  // format the transaction data for metamask signature
+  // format the transaction data for metamask tx signature
   const options = () => ({
     chain: "rinkeby",
     contractAddress: linkTokenAddress,
@@ -145,6 +131,10 @@ const Hero = ({ handleVMTreeCreation }) => {
 
   const initialRef = React.useRef();
   const finalRef = React.useRef();
+
+  // const { authenticate, isAuthenticated, user } = useMoralis();
+  // // const currUser = Moralis.User.current()
+  // // var wallet = user.get("ethAddress");
 
   return (
     <Box
@@ -247,11 +237,11 @@ const Hero = ({ handleVMTreeCreation }) => {
                   borderWidth: "1.5px",
                 }}
                 onClick={() => {
-                  handleCreateTree();
+                  handleCreateTree()
                 }}
               >
-                Deploy It!
-              </Button>
+                      Deploy It!
+                    </Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
