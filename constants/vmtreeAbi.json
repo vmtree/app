@@ -1,0 +1,319 @@
+[
+    {
+        "inputs": [],
+        "name": "GteSnarkScalarField",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "InsufficientLeaves",
+        "type": "error"
+    },
+    {
+        "inputs": [
+        {
+            "internalType": "address",
+            "name": "linkPayerOrCollector",
+            "type": "address"
+        }
+        ],
+        "name": "InsufficientLinkBalance",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "InvalidMassUpdateProof",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "InvalidMsgSender",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "InvalidUpdateProof",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "OnlyController",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "PairingLengthsFailed",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "TreeAlreadyPlanted",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "TreeIsFull",
+        "type": "error"
+    },
+    {
+        "inputs": [],
+        "name": "ZeroAddress",
+        "type": "error"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+        {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "leaf",
+            "type": "uint256"
+        },
+        {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "index",
+            "type": "uint256"
+        }
+        ],
+        "name": "LeafCommitted",
+        "type": "event"
+    },
+    {
+        "anonymous": false,
+        "inputs": [
+        {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "previousIndex",
+            "type": "uint256"
+        },
+        {
+            "indexed": false,
+            "internalType": "uint256",
+            "name": "nextIndex",
+            "type": "uint256"
+        }
+        ],
+        "name": "TreeUpdated",
+        "type": "event"
+    },
+    {
+        "inputs": [],
+        "name": "TREE_CAPACITY",
+        "outputs": [
+        {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "arborist",
+        "outputs": [
+        {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "checkMassUpdate",
+        "outputs": [
+        {
+            "internalType": "uint256[10]",
+            "name": "",
+            "type": "uint256[10]"
+        },
+        {
+            "internalType": "uint256[20]",
+            "name": "",
+            "type": "uint256[20]"
+        },
+        {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+        {
+            "internalType": "uint256",
+            "name": "leaf",
+            "type": "uint256"
+        }
+        ],
+        "name": "commit",
+        "outputs": [
+        {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "controller",
+        "outputs": [
+        {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "currentRoot",
+        "outputs": [
+        {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+        {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }
+        ],
+        "name": "filledSubtrees",
+        "outputs": [
+        {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "getFilledSubtrees",
+        "outputs": [
+        {
+            "internalType": "uint256[20]",
+            "name": "",
+            "type": "uint256[20]"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "latestIndex",
+        "outputs": [
+        {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [],
+        "name": "nextIndex",
+        "outputs": [
+        {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+        }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "inputs": [
+        {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+        },
+        {
+            "internalType": "uint256[20]",
+            "name": "newSubtrees",
+            "type": "uint256[20]"
+        }
+        ],
+        "name": "performMassUpdate",
+        "outputs": [
+        {
+            "internalType": "uint256",
+            "name": "finalIndex",
+            "type": "uint256"
+        }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+        {
+            "internalType": "address",
+            "name": "_arborist",
+            "type": "address"
+        },
+        {
+            "internalType": "address",
+            "name": "_controller",
+            "type": "address"
+        }
+        ],
+        "name": "plant",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "inputs": [
+        {
+            "internalType": "uint256[8]",
+            "name": "proof",
+            "type": "uint256[8]"
+        },
+        {
+            "internalType": "uint256[20]",
+            "name": "newSubtrees",
+            "type": "uint256[20]"
+        }
+        ],
+        "name": "update",
+        "outputs": [
+        {
+            "internalType": "uint256",
+            "name": "finalIndex",
+            "type": "uint256"
+        }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+    }
+]
