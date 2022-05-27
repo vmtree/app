@@ -16,11 +16,14 @@ import {
   GridItem,
   AspectRatio,
   Stack,
+  Tooltip,
+  Avatar
 } from "@chakra-ui/react";
 import {
   ChevronDownIcon,
   ChevronRightIcon,
   DownloadIcon,
+  ExternalLinkIcon
 } from "@chakra-ui/icons";
 import Card from "../components/Card";
 
@@ -32,7 +35,7 @@ const LandingPage = (props) => {
           <Flex
             justifyContent="space-between"
             alignItems="center"
-            pt="5vh"
+            pt="70px"
             mb="5em"
             backgroundSize="contain"
             backgroundImage="url(/tree_skeleton_small.svg)"
@@ -41,33 +44,39 @@ const LandingPage = (props) => {
             w="full"
           >
             <Flex
-              ml="15%"
+              ml="10em"
               bgColor="#365AD2"
               borderBottomRadius="50%"
-              p="1%"
+              p="10px"
               h="full"
             >
-              <Image src="/vmt_logo_white.svg" boxSize="280px" alt="VMTree" />
+              <Image src="/vmt_logo_white.svg" boxSize="280px" alt="VMTree" zIndex="2"/>
             </Flex>
-            <Flex mr="40%" flexDirection="column" h="full">
+            <Flex mr="20%" flexDirection="column" h="full">
               <Heading
                 letterSpacing="widest"
                 fontSize="5xl"
                 fontWeight="semibold"
               >
-                VMTree
+                Verifiable Merkle Trees
               </Heading>
-              <Text letterSpacing="widest">Verifiable Merkle Trees</Text>
-              <Link sx={{ textDecoration: "none" }} href="/dapp">
+              <Text letterSpacing="widest" textTransform="uppercase">affordable privacy on-chain</Text>
+              <Link 
+                sx={{ textDecoration: "none" }} 
+                _hover={{ textDecoration: "none" }} 
+                href="/dapp"
+                pt="5px"
+              >
                 <Button
                   variant="solid"
-                  size="sm"
+                  size="md"
                   mt="2em"
                   pl="2em"
                   pr="1em"
                   borderRadius={155}
                   bg="#365AD2"
                   color="#fff"
+                  boxShadow='dark-lg'
                   rightIcon={<ChevronRightIcon />}
                   _hover={{ background: "#fff", color: "#365AD2" }}
                 >
@@ -104,7 +113,10 @@ const LandingPage = (props) => {
                 VMTree
               </Heading>
               <Text letterSpacing="widest">Verifiable Merkle Trees</Text>
-              <Link sx={{ textDecoration: "none" }}>
+              <Link 
+              sx={{ textDecoration: "none" }}
+               _hover={{ textDecoration: "none" }}
+                href="/dapp">
                 <Button
                   variant="solid"
                   size="sm"
@@ -115,7 +127,8 @@ const LandingPage = (props) => {
                   bg="#365AD2"
                   color="#fff"
                   rightIcon={<ChevronRightIcon />}
-                  _hover={{ background: "#fff", color: "#365AD2" }}
+                  boxShadow='dark-lg'
+                  _hover={{ background: "#fff", color: "#365AD2", textDecoration: "none" }}
                 >
                   Try it!
                 </Button>
@@ -124,13 +137,14 @@ const LandingPage = (props) => {
           </Flex>
         </Show>
 
-        <Text color="gray.300" mb="2em" letterSpacing="widest" fontSize="sm">
+        <Text color="gray.500" mb="2em" letterSpacing="widest" fontSize="sm">
           A Chainlink 2022 Hackathon Project
         </Text>
 
         <Flex
           justifyContent="space-around"
           alignItems="center"
+          mt="50px"
           pt="3em"
           pb="3em"
           pl="15%"
@@ -148,9 +162,12 @@ const LandingPage = (props) => {
             justifyContent="center"
             alignItems="center"
           >
-            <Text fontSize="2xl" color="#fff">
-              38
-            </Text>
+            <Tooltip label='Dummy Numbers'>
+              <Text fontSize="2xl" color="#fff">
+                38
+              </Text>
+            </Tooltip>
+            
             <Text fontSize="sm" color="#fff">
               Merke Trees Deployed
             </Text>
@@ -163,9 +180,11 @@ const LandingPage = (props) => {
             justifyContent="center"
             alignItems="center"
           >
-            <Text fontSize="2xl" color="#fff">
-              287
-            </Text>
+            <Tooltip label='Dummy Numbers'>
+              <Text fontSize="2xl" color="#fff">
+                287
+              </Text>
+            </Tooltip>
             <Text fontSize="sm" color="#fff">
               Transactions
             </Text>
@@ -178,9 +197,11 @@ const LandingPage = (props) => {
             justifyContent="center"
             alignItems="center"
           >
-            <Text fontSize="2xl" color="#fff">
-              5982
-            </Text>
+            <Tooltip label='Dummy Numbers'>
+              <Text fontSize="2xl" color="#fff">
+                5982
+              </Text>
+            </Tooltip>
             <Text fontSize="sm" color="#fff">
               Fee Generated
             </Text>
@@ -191,10 +212,11 @@ const LandingPage = (props) => {
           <Link
             href="#about"
             _hover={{ textDecoration: "none", boxShadow: "dark-lg" }}
-            mt="3%"
+            mt="80px"
             borderRadius="50%"
-            boxShadow="xl"
+            boxShadow="dark-lg"
             pos="absolute"
+            
           >
             <ChevronDownIcon
               boxSize="10"
@@ -207,11 +229,9 @@ const LandingPage = (props) => {
 
         <Flex align="center" w="50%" mt="8%">
           <Text textAlign="center" letterSpacing="wide">
-            VMTree allows anyone to deploy a verifable merkle tree using the
-            chainlink network. Lorem ipsum condimentum ornare ante, at maximus
-            sapien porta sit amet. Morbi orci lectus, cursus ut ipsum convallis,
-            tempor feugiat quam. In vel odio non velit blandit lobortis. Mauris
-            quis quam fermentum, cursus quam at, dignissim ante.
+            Introducing an evolution in cryptographically guaranteed composable smart contracts.  <br/>
+            Utilizing Chainlink for off-chain computation, entirely new paradigms of anonymity are possible. <br/>
+            All for significantly less gas fees!
           </Text>
         </Flex>
       </Flex>
@@ -232,49 +252,41 @@ const LandingPage = (props) => {
           ml={0}
           borderTopRightRadius="35em"
           borderBottomRightRadius="35em"
-          // backgroundImage="url(/blue_curved_box.svg)"
-          // backgroundPosition="center"
-          // backgroundRepeat="no-repeat"
-          // backgroundSize="contain"
         >
           <Text fontSize="5xl" fontWeight="bold">
             VMTs
           </Text>
           <Text mt="1em">
-            This section will be for explaining what VMTs are, what they can be
-            used for an all kinds of stuff like that... Placeholder Text
-            <br />
-            <br />
-            Placeholder Text Placeholder Text This section will be for
-            explaining what VMTs are, what they can be all kinds of stuff like
-            that... Placeholder Text Placeholde
-            <br />
-            <br />
-            This section will be for explaining what VMTs are, what they can be
-            used for an all kinds of stuff like that... Placeholder Text
-            Placeholde
+            VMTrees use merkle trees combined with cryptographic proof for a variety of use cases such as  anonymous airdrops, governance voting and privacy mixers. 
+            <br/><br/> 
+            This is not limited to Ethereum - using Chainlink allows the technology to be layer 1 blockchain agnostic.  
+            <br/><br/>
+            Please read our documentation to learn how Verifiable Merkle Trees work under the hood.
           </Text>
         </Flex>
         <Flex flexDirection="column" mr="10%" alignItems="center">
           <Link
-            href="/dapp"
+            href="https://github.com/vmtree/chainlink-vmt#readme"
+            isExternal
             _hover={{ textDecoration: "none", boxShadow: "2xl" }}
             borderRadius="50%"
-            boxShadow="xl"
+            boxShadow='dark-lg'
             boxSize="80px"
             alignItems="center"
             alignContent="center"
           >
-            <DownloadIcon
-              boxSize="80px"
+            <ExternalLinkIcon
+              boxSize="60px"
               color="#365AD2"
-              zIndex="9999"
-              p="20%"
+              pl="20px"
+              pt="20px"
             />
           </Link>
-          <Text mt="1em" fontWeight="semibold">
-            Download the Docs
-          </Text>
+          <Link href="https://github.com/vmtree/chainlink-vmt#readme" _hover={{ textDecoration: "none" }} mt="1em" isExternal>
+            <Text fontWeight="semibold">
+              Read the Docs
+            </Text>
+          </Link>
         </Flex>
       </Flex>
 
@@ -288,11 +300,11 @@ const LandingPage = (props) => {
       >
         <Flex w="50%" alignContent="center" alignItems="center">
           <Text textAlign="center" letterSpacing="wide">
-            VMTree allows anyone to deploy a verifable merkle tree using the
+            {/* VMTree allows anyone to deploy a verifable merkle tree using the
             chainlink network. Lorem ipsum condimentum ornare ante, at maximus
             sapien porta sit amet. Morbi orci lectus, cursus ut ipsum convallis,
             tempor feugiat quam. In vel odio non velit blandit lobortis. Mauris
-            quis quam fermentum, cursus quam at, dignissim ante.
+            quis quam fermentum, cursus quam at, dignissim ante. */}
           </Text>
         </Flex>
       </Flex>
@@ -319,23 +331,112 @@ const LandingPage = (props) => {
       >
         <Heading>The Team</Heading>
         <Flex
-          flexDirection="row"
-          align="center"
-          mt="4%"
-          justifyContent="space-between"
-        >
-          <Card />
-          <Card />
-        </Flex>
-        <Flex
-          flexDirection="row"
-          align="center"
-          mt={10}
-          alignContent="center"
+          flexDirection="column"
+          justifyContent="center"
           alignItems="center"
+          mt="5em"
         >
-          <Card />
-          <Card />
+          <Flex justifyContent="center" alignItems="center" mb="20px">
+            <Flex mr="80px">
+              <Box
+              maxW={"320px"}
+              w={"full"}
+              rounded={"lg"}
+              pr={15}
+              pl={15}
+              textAlign={"center"}
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Avatar size={"xl"} src="/u_twisterDev.png" alt="Twister Dev" />
+              <Text fontWeight={600} color={"gray.500"} mb={1}>
+                Twister Dev
+              </Text>
+              <Stack align={"center"} justify={"center"} direction={"row"}>
+                <Link href="https://github.com/twister-dev">
+                    <Image src="/github.svg" alt="github" borderRadius="full" />
+                </Link>
+                <Link href="https://twitter.com/youjustwin42">
+                  <Image src="/twitter.svg" alt="twitter" borderRadius="full" />
+                </Link>
+              </Stack>
+            </Box>
+            </Flex>
+            <Flex ml="80px">
+              <Box
+                maxW={"320px"}
+                w={"full"}
+                rounded={"lg"}
+                pr={15}
+                pl={15}
+                textAlign={"center"}
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Avatar size={"xl"} src="/u_brad.jpg" alt="Twister Dev" />
+                <Text fontWeight={600} color={"gray.500"} mb={1}>
+                  heyitsbrad
+                </Text>
+                <Stack align={"center"} justify={"center"} direction={"row"}>
+                  <Link href="https://github.com/swicksystems">
+                      <Image src="/github.svg" alt="github" borderRadius="full" />
+                  </Link>
+                </Stack>
+              </Box>
+            </Flex>
+          </Flex>
+          <Flex justifyContent="center" alignItems="center" mt="20px">
+            <Flex mr="80px">
+              <Box
+              maxW={"320px"}
+              w={"full"}
+              rounded={"lg"}
+              pr={15}
+              pl={15}
+              textAlign={"center"}
+              alignItems="center"
+              justifyContent="center"
+            >
+              <Avatar size={"xl"} src="/u_aayush.png" alt="Twister Dev" />
+              <Text fontWeight={600} color={"gray.500"} mb={1}>
+                Aayush Chaturvedi
+              </Text>
+              <Stack align={"center"} justify={"center"} direction={"row"}>
+                <Link href="https://github.com/aayush4vedi">
+                    <Image src="/github.svg" alt="github" borderRadius="full" />
+                </Link>
+                <Link href="https://twitter.com/aayush4vedi">
+                  <Image src="/twitter.svg" alt="twitter" borderRadius="full" />
+                </Link>
+                <Link href="https://www.linkedin.com/in/aayush-chaturvedi-bb7143116/">
+                  <Image src="/linkedin.svg" alt="linkedin" borderRadius="full" />
+                </Link>
+              </Stack>
+            </Box>
+            </Flex>
+            <Flex ml="80px">
+              <Box
+                maxW={"320px"}
+                w={"full"}
+                rounded={"lg"}
+                pr={15}
+                pl={15}
+                textAlign={"center"}
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Avatar size={"xl"} src="/u_cedric.JPG" alt="Twister Dev" />
+                <Text fontWeight={600} color={"gray.500"} mb={1}>
+                  Cedric Heidt 
+                </Text>
+                <Stack align={"center"} justify={"center"} direction={"row"}>
+                  <Link href="https://www.linkedin.com/in/cedric-heidt/">
+                    <Image src="/linkedin.svg" alt="linkedin" borderRadius="full" />
+                  </Link>
+                </Stack>
+              </Box>
+            </Flex>
+          </Flex>
         </Flex>
       </Flex>
     </Box>

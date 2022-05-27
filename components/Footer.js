@@ -18,14 +18,14 @@ const Footer = () => {
       minH="20em"
       alignItems="center"
       justifyContent="center"
-      mt="5em"
+      mt="150px"
       p="0"
       border="none"
       zIndex="-1"
       left= "0"
       bottom= "0"
     >
-      <Text color="gray.300" mb="8em" letterSpacing="widest">
+      <Text color="gray.500" mb="8em" letterSpacing="widest">
         A Chainlink 2022 Hackathon Project
       </Text>
       <Flex

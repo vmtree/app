@@ -10,7 +10,7 @@ const NavBar = (props) => {
   console.log(pageType);
 
   return (
-    <NavBarContainer {...props} zIndex="100">
+    <NavBarContainer {...props} zIndex="100" maxH="80px">
       <Logo w="100px" />
       <MenuToggle toggle={toggle} isOpen={isOpen} />
       <MenuLinks isOpen={isOpen} pageType={pageType} />
@@ -75,7 +75,9 @@ const MenuLinks = ({ isOpen, pageType }) => {
             bg="#fff"
             _hover={{ background: "#2c4cb6", color: "#fff" }}
           >
-            DOCS
+            <Text fontSize='sm'>
+              DOCS
+            </Text>
           </Button>
         </Link>
         <SecondButton pageType={pageType}/>
@@ -96,7 +98,10 @@ const SecondButton = ({ pageType }) => {
           bg="#fff"
           _hover={{ background: "#2c4cb6", color: "#fff" }}
         >
-          LAUNCH APP
+          <Text fontSize='sm'>
+              LAUNCH APP
+          </Text>
+          
         </Button>
       </Link>
     );

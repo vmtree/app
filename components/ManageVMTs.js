@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { SettingsIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import {
   Button,
@@ -175,19 +177,19 @@ const ManageVMTs = (props) => {
             //     address linkPayer;
             //   }
               return (
-                <Tr>
-                  <Td>
-                    {vmtree[1] ? (
-                      <Image src="enabled_vmt.svg" alt="enabled" />
-                    ) : (
-                      <Image src="disabled_vmt.svg" alt="disabled" />
-                    )}
-                  </Td>
-                  <Td fontSize='xs'>{/* name */ vmtree[0]}</Td>
-                  <Td fontSize='xs'>{/* contractAddress */ vmtree[2]}</Td>
-                  <Td fontSize='xs'>{/* controller */ vmtree[3]}</Td>
-                  <Td fontSize='xs'>{/* linkPayer */ vmtree[4]}</Td>
-                </Tr>
+                <Tr>              
+                  <Td>              
+                    {vmtree[1] ? (              
+                      <Image src="enabled_vmt.svg" alt="enabled" />             
+                    ) : (             
+                      <Image src="disabled_vmt.svg" alt="disabled" />             
+                    )}              
+                  </Td>             
+                  <Td fontSize='xs'>{/* name */ vmtree[0]}</Td>             
+                  <Td fontSize='xs'>{/* contractAddress */ vmtree[2]}</Td>              
+                  <Td fontSize='xs'>{/* controller */ vmtree[3]}</Td>             
+                  <Td fontSize='xs'>{/* linkPayer */ vmtree[4]}</Td>              
+                </Tr>             
               )
             })}
         </Tbody>

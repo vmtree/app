@@ -118,7 +118,7 @@ const ExploreVMTs = (props) => {
 
       <TableContainer>
       <Table variant='simple' mb="20px">
-        <TableCaption fontSize="5xs" color="gray.300">List of VMTrees Deployed</TableCaption>
+        <TableCaption fontSize="xs" color="gray.300">List of VMTrees Deployed</TableCaption>
         <Thead>
           <Trh>
             <Th>STATUS</Th>
@@ -140,7 +140,7 @@ const ExploreVMTs = (props) => {
               //     address linkPayer;
               //   }
               return (
-                <Tr>
+                <Tr key={vmtree[2]}>
                   <Td>
                     {vmtree[1] ? (
                       <Image src="enabled_vmt.svg" alt="enabled" />

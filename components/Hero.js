@@ -56,7 +56,7 @@ const Hero = ({ handleVMTreeCreation }) => {
   const handleNameChange = (e) => setName(e.target.value);
   const handleControllerChange = (e) => setController(e.target.value);
   const handleLinksChange = (e) => {
-      setLinks(e.target.value || "1");
+    setLinks(e.target.value || "1");
   }
 
   // modal related stuff
@@ -193,12 +193,19 @@ const Hero = ({ handleVMTreeCreation }) => {
               <FormControl mt={4} isRequired>
                 <FormLabel>LINKs to Prefund the VMTree</FormLabel>
                 <Input
-                  placeholder="Enter #LINK"
+                  placeholder="Enter #LINKs"
                   width="32em"
                   name="links"
                   value={links}
                   onChange={handleLinksChange}
                 />
+                {isLinksError ? (
+                  <FormErrorMessage>LINKs should atleast be one.</FormErrorMessage>
+                  ) : (
+                    <FormHelperText>
+                      Enter the number of LINK tokens to prefund you tree
+                    </FormHelperText>
+                  )}
               </FormControl>
             </ModalBody>
 
