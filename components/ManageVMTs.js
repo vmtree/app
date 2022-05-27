@@ -32,8 +32,8 @@ const ManageVMTs = (props) => {
   const [linkPayer, setLinkPayer] = useState();
   const [amount, setAmount] = useState();
   // form handlers
-  const handleLinkPayer = e => setLinkPayer(e.target.value);
-  const handleAmount = e => setAmount(e.target.value);
+  const handleLinkPayer = (e) => setLinkPayer(e.target.value);
+  const handleAmount = (e) => setAmount(e.target.value);
   // errors
   const linkPayerError = !linkPayer || !isAddress(linkPayer);
   const amountError = !amount || !isNumberString(amount);
@@ -48,17 +48,12 @@ const ManageVMTs = (props) => {
   };
   // useApiContract connects to moralis provider without needing user's wallet
   // to be connected
-  const {
-    runContractFunction,
-    data,
-    error,
-    isLoading,
-    isFetching,
-  } = useApiContract(getVMTreesOptions);
+  const { runContractFunction, data, error, isLoading, isFetching } =
+    useApiContract(getVMTreesOptions);
   // get the tree data when the page loads
   useEffect(() => {
     runContractFunction();
-  }, [runContractFunction]);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // to make transactions, we need to be connected to the user's wallet.
   // the useMoralis hook gets the account from the ConnectButton and gives us
@@ -69,38 +64,49 @@ const ManageVMTs = (props) => {
   // account is either the controller or the linkPayer
   useEffect(() => {
     if (data && account) {
-        const trees = data[1].filter((vmtree) => {
-            return (getAddress(vmtree[3]) == getAddress(account))
-                || (getAddress(vmtree[2]) == getAddress(account));
-        });
-        setMyTrees(trees);
+      const trees = data[1].filter((vmtree) => {
+        return (
+          getAddress(vmtree[3]) == getAddress(account) ||
+          getAddress(vmtree[2]) == getAddress(account)
+        );
+      });
+      setMyTrees(trees);
 
-        console.log("[ManageVMTs] ........................>>");
-        console.log("........................ appId: ", process.env.NEXT_PUBLIC_APP_ID)
-        console.log("........................ serverUrl: ", process.env.NEXT_PUBLIC_SERVER_URL)
-        console.log("........................ myTrees: ", myTrees)
-        console.log("........................ linkPayer: ", linkPayer);
-        console.log("........................ getVMTreesOptions: ", getVMTreesOptions)
+      console.log("[ManageVMTs] ........................>>");
+      console.log(
+        "........................ appId: ",
+        process.env.NEXT_PUBLIC_APP_ID
+      );
+      console.log(
+        "........................ serverUrl: ",
+        process.env.NEXT_PUBLIC_SERVER_URL
+      );
+      console.log("........................ myTrees: ", myTrees);
+      console.log("........................ linkPayer: ", linkPayer);
+      console.log(
+        "........................ getVMTreesOptions: ",
+        getVMTreesOptions
+      );
     }
-  }, [data, account])
+  }, [data, account]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // for each contract interaction that we can do with the VMTree, we want
   // a pair of functionNameOptions and functionName objects to do the tx.
   // then we add a form + button that calls the functionName
   const topUpLinkOptions = () => ({
-      chain: "rinkeby",
-      address: arboristAddress,
-      functionName: "topUpLink",
-      abi: arboristAbi,
-      params: { linkPayer, amount }
+    chain: "rinkeby",
+    address: arboristAddress,
+    functionName: "topUpLink",
+    abi: arboristAbi,
+    params: { linkPayer, amount },
   });
   async function topUpLink() {
-      try {
-          const tx = await Moralis.executeFunction(topUpLinkOptions())
-          const receipt = await tx.wait();
-      } catch (err) {
-          console.log(err);
-      }
+    try {
+      const tx = await Moralis.executeFunction(topUpLinkOptions());
+      const receipt = await tx.wait();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   if (!isWeb3Enabled || !account || !myTrees.length) return null;
@@ -168,7 +174,6 @@ const ManageVMTs = (props) => {
             <Text bg="#fff"></Text>
             <Text bg="#fff"></Text>
           </SimpleGrid>
-
 
           <TreeEntry myTrees={myTrees} />
         </Box>

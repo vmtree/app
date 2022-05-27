@@ -20,7 +20,6 @@ import TableHeader from "./TableHeader";
 import TreeEntry from "./TreeEntry";
 
 const ExploreVMTs = (props) => {
-
   // treats arborist contract as backend database
   const getVMTreesOptions = {
     chain: "rinkeby",
@@ -31,13 +30,8 @@ const ExploreVMTs = (props) => {
   };
   // useApiContract connects to moralis provider without needing user's wallet
   // to be connected
-  const {
-    runContractFunction,
-    data,
-    error,
-    isLoading,
-    isFetching,
-  } = useApiContract(getVMTreesOptions);
+  const { runContractFunction, data, error, isLoading, isFetching } =
+    useApiContract(getVMTreesOptions);
   // get the tree data when the page loads
   useEffect(() => {
     runContractFunction();
@@ -56,51 +50,50 @@ const ExploreVMTs = (props) => {
       "........................ getVMTreesOptions: ",
       getVMTreesOptions
     );
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  }, [runContractFunction]);
-
-  if(!data){
+  if (!data) {
     return (
       <Box paddingLeft="7%" paddingRight="7%">
-      <Flex>
-        <Text fontSize="xl" ml="2em" fontWeight="bold">
-          Explore VMTs
-        </Text>
-      </Flex>
-
-      <Box>
-        <Flex
-          pl="5em"
-          pr="5em"
-          fontSize="xx-small"
-          minWidth="max-content"
-          alignItems="center"
-          gap="2"
-        >
-          <Flex>
-            <Box w="100%" h="10" bg="blue.500" />
-            <GridItem w="100%" h="10" bg="blue.500" />
-          </Flex>
-          <Flex>
-            <GridItem w="100%" h="10" bg="blue.500" />
-            <GridItem w="100%" h="10" bg="blue.500" />
-            <GridItem w="100%" h="10" bg="blue.500" />
-          </Flex>
+        <Flex>
+          <Text fontSize="xl" ml="2em" fontWeight="bold">
+            Explore VMTs
+          </Text>
         </Flex>
-        <TableHeader/>
-        <Box pt={10}>
-        <Stack ml="2em" mr="2em">
-          <Skeleton height='50px' borderRadius={155}/>
-          <Skeleton height='50px' borderRadius={155}/>
-          <Skeleton height='50px' borderRadius={155}/>
-          <Skeleton height='50px' borderRadius={155}/>
-          <Skeleton height='50px' borderRadius={155}/>
-          <Skeleton height='50px' borderRadius={155}/>
-        </Stack>
+
+        <Box>
+          <Flex
+            pl="5em"
+            pr="5em"
+            fontSize="xx-small"
+            minWidth="max-content"
+            alignItems="center"
+            gap="2"
+          >
+            <Flex>
+              <Box w="100%" h="10" bg="blue.500" />
+              <GridItem w="100%" h="10" bg="blue.500" />
+            </Flex>
+            <Flex>
+              <GridItem w="100%" h="10" bg="blue.500" />
+              <GridItem w="100%" h="10" bg="blue.500" />
+              <GridItem w="100%" h="10" bg="blue.500" />
+            </Flex>
+          </Flex>
+          <TableHeader />
+          <Box pt={10}>
+            <Stack ml="2em" mr="2em">
+              <Skeleton height="50px" borderRadius={155} />
+              <Skeleton height="50px" borderRadius={155} />
+              <Skeleton height="50px" borderRadius={155} />
+              <Skeleton height="50px" borderRadius={155} />
+              <Skeleton height="50px" borderRadius={155} />
+              <Skeleton height="50px" borderRadius={155} />
+            </Stack>
+          </Box>
         </Box>
       </Box>
-    </Box>
-    )
+    );
   }
 
   return (
@@ -130,9 +123,11 @@ const ExploreVMTs = (props) => {
             <GridItem w="100%" h="10" bg="blue.500" />
           </Flex>
         </Flex>
-        <TableHeader/>
+        {/* <Button onClick={runContractFunction()} /> */}
+        <TableHeader />
         <Box>
-        { data && data[1].map((vmtree, index) => {
+          {data &&
+            data[1].map((vmtree, index) => {
               // The struct returns data in an array!
               //   struct VMTreeData {
               //     string name;
@@ -141,11 +136,8 @@ const ExploreVMTs = (props) => {
               //     address controller;
               //     address linkPayer;
               //   }
-              return (
-                <TreeEntry myTrees={data[1]} key={data[1][2]}/>
-              );
-            })
-          }
+              return <TreeEntry myTrees={data[1]} key={data[1][2]} />;
+            })}
         </Box>
       </Box>
     </Box>
