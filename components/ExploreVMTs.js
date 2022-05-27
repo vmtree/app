@@ -9,11 +9,15 @@ import {
   Grid,
   GridItem,
   SimpleGrid,
+  Stack,
+  Skeleton
 } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useApiContract } from "react-moralis";
 import { arboristAbi } from "../constants/abi";
 import { arboristAddress } from "../constants/addresses";
+import TableHeader from "./TableHeader";
+import TreeEntry from "./TreeEntry";
 
 const ExploreVMTs = (props) => {
 
@@ -39,8 +43,9 @@ const ExploreVMTs = (props) => {
     runContractFunction();
   }, [runContractFunction]);
 
-  return (
-    <Box paddingLeft="7%" paddingRight="7%">
+  if(!data){
+    return (
+      <Box paddingLeft="7%" paddingRight="7%">
       <Flex>
         <Text fontSize="xl" ml="2em" fontWeight="bold">
           Explore VMTs
@@ -48,7 +53,6 @@ const ExploreVMTs = (props) => {
       </Flex>
 
       <Box>
-        {/* Header row */}
         <Flex
           pl="5em"
           pr="5em"
@@ -67,39 +71,50 @@ const ExploreVMTs = (props) => {
             <GridItem w="100%" h="10" bg="blue.500" />
           </Flex>
         </Flex>
-        <SimpleGrid
-          columns={25}
-          spacing={0.5}
-          fontSize="xx-small"
-          color="gray.400"
-        >
-          <Text bg="#fff"></Text>
-          <Text bg="#fff">STATUS</Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff">ADDRESS</Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff">NAME</Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff">BALANCE</Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff">USAGE</Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff">CREATED</Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-          <Text bg="#fff"></Text>
-        </SimpleGrid>
+        <TableHeader/>
+        <Box pt={10}>
+        <Stack ml="2em" mr="2em">
+          <Skeleton height='50px'/>
+          <Skeleton height='50px'/>
+          <Skeleton height='50px'/>
+          <Skeleton height='50px'/>
+          <Skeleton height='50px'/>
+          <Skeleton height='50px'/>
+        </Stack>
+        </Box>
+      </Box>
+    </Box>
+    )
+  }
 
+  return (
+    <Box paddingLeft="7%" paddingRight="7%">
+      <Flex>
+        <Text fontSize="xl" ml="2em" fontWeight="bold">
+          Explore VMTs
+        </Text>
+      </Flex>
+
+      <Box>
+        <Flex
+          pl="5em"
+          pr="5em"
+          fontSize="xx-small"
+          minWidth="max-content"
+          alignItems="center"
+          gap="2"
+        >
+          <Flex>
+            <Box w="100%" h="10" bg="blue.500" />
+            <GridItem w="100%" h="10" bg="blue.500" />
+          </Flex>
+          <Flex>
+            <GridItem w="100%" h="10" bg="blue.500" />
+            <GridItem w="100%" h="10" bg="blue.500" />
+            <GridItem w="100%" h="10" bg="blue.500" />
+          </Flex>
+        </Flex>
+        <TableHeader/>
         <Box>
         { data && data[1].map((vmtree, index) => {
               // The struct returns data in an array!
@@ -111,37 +126,7 @@ const ExploreVMTs = (props) => {
               //     address linkPayer;
               //   }
               return (
-                <Flex
-                  justifyContent="space-between"
-                  backgroundColor="#fff"
-                  borderRadius={155}
-                  boxShadow="md"
-                  padding="1em"
-                  pl="5em"
-                  pr="5em"
-                  fontSize="smaller"
-                  color="gray.600"
-                  margin="1em"
-                  key={vmtree[0]}
-                >
-                  <Text>
-                    {vmtree[1] ? (
-                      <Image src="enabled_vmt.svg" alt="enabled" />
-                    ) : (
-                      <Image src="disabled_vmt.svg" alt="disabled" />
-                    )}
-                  </Text>
-                  <Text>{/* name */ vmtree[0]}</Text>
-                  <Text>{/* contractAddress */ vmtree[2]}</Text>
-                  <Text>{/* controller */ vmtree[3]}</Text>
-                  <Text>{/* linkPayer */ vmtree[4]}</Text>
-                  <Text isNumeric>{/* linkPayerBalance */}</Text>
-                  <Text>
-                    <Link href="#">
-                      <SettingsIcon />
-                    </Link>
-                  </Text>
-                </Flex>
+                <TreeEntry myTrees={data[1]} key={data[1][2]}/>
               );
             })
           }

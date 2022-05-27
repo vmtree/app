@@ -10,12 +10,17 @@ import {
   GridItem,
   Show,
   SimpleGrid,
+  Stack,
+  Skeleton
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useApiContract, useMoralis } from "react-moralis";
 import { arboristAbi, vmtreeAbi } from "../constants/abi";
 import { arboristAddress } from "../constants/addresses";
 import { isAddress, getAddress } from "@ethersproject/address";
+import TableHeader from "./TableHeader";
+import TreeEntry from "./TreeEntry";
+
 
 function isNumberString(arg) {
     // 78 is the max length of characters of MaxUint256 in string form
@@ -68,7 +73,7 @@ const ManageVMTs = (props) => {
             return (getAddress(vmtree[3]) == getAddress(account))
                 || (getAddress(vmtree[2]) == getAddress(account));
         });
-        setMyTrees(trees);
+        // setMyTrees(trees);
     }
   }, [data, account])
 
@@ -157,50 +162,8 @@ const ManageVMTs = (props) => {
             <Text bg="#fff"></Text>
           </SimpleGrid>
 
-          { myTrees.map((vmtree, index) => {
-              // The struct returns data in an array!
-              //   struct VMTreeData {
-              //     string name;
-              //     bool isActive;
-              //     address contractAddress;
-              //     address controller;
-              //     address linkPayer;
-              //   }
-              return (
-                <Flex
-                  justifyContent="space-between"
-                  backgroundColor="#fff"
-                  borderRadius={155}
-                  boxShadow="md"
-                  padding="1em"
-                  pl="5em"
-                  pr="5em"
-                  fontSize="smaller"
-                  color="gray.600"
-                  margin="1em"
-                  key={vmtree[0]}
-                >
-                  <Text>
-                    {vmtree[1] ? (
-                      <Image src="enabled_vmt.svg" alt="enabled" />
-                    ) : (
-                      <Image src="disabled_vmt.svg" alt="disabled" />
-                    )}
-                  </Text>
-                  <Text>{/* name */ vmtree[0]}</Text>
-                  <Text>{/* contractAddress */ vmtree[2]}</Text>
-                  <Text>{/* controller */ vmtree[3]}</Text>
-                  <Text>{/* linkPayer */ vmtree[4]}</Text>
-                  <Text isNumeric>{/* linkPayerBalance */}</Text>
-                  <Text>
-                    <Link href="#">
-                      <SettingsIcon />
-                    </Link>
-                  </Text>
-                </Flex>
-              );
-            })
-          }
+
+          <TreeEntry myTrees={myTrees} />
         </Box>
       </Box>
     </Box>
