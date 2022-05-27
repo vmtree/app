@@ -106,19 +106,19 @@ const ExploreVMTs = (props) => {
   return (
     <Box paddingLeft="7%" paddingRight="7%">
       <Divider
-          borderColor="#E2E8F0"
+          borderColor="#fff"
           mb="1em"
-          mt="5em"
+          mt="2em"
         />
       <Flex>
-        <Text fontSize="xl" ml="2em" fontWeight="bold">
+        <Text fontSize="xl" ml="5px" fontWeight="bold" mb="10px">
           Explore VMTs
         </Text>
       </Flex>
 
       <TableContainer>
-      <Table variant='simple'>
-        <TableCaption>List of VMTrees Deployed</TableCaption>
+      <Table variant='simple' mb="20px">
+        <TableCaption fontSize="5xs" color="gray.300">List of VMTrees Deployed</TableCaption>
         <Thead>
           <Trh>
             <Th>STATUS</Th>
