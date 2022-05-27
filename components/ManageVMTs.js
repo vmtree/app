@@ -60,7 +60,7 @@ const ManageVMTs = (props) => {
     useApiContract(getVMTreesOptions);
   // get the tree data when the page loads
   useEffect(() => {
-    // runContractFunction();
+    runContractFunction();
   }, []);       // eslint-disable-line react-hooks/exhaustive-deps
 
   // to make transactions, we need to be connected to the user's wallet.

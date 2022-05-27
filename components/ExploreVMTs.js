@@ -49,17 +49,13 @@ const ExploreVMTs = (props) => {
   } = useApiContract(getVMTreesOptions);
   // get the tree data when the page loads
   useEffect(() => {
-    // runContractFunction()
+    runContractFunction()
   }, []);     // eslint-disable-line react-hooks/exhaustive-deps
 
   if(!data) {
     return (
       <Box paddingLeft="7%" paddingRight="7%">
-        <Divider
-          borderColor="#E2E8F0"
-          mb="1em"
-          mt="5em"
-        />
+        <Divider borderColor="#E2E8F0" mb="1em" mt="5em" />
         <Flex>
           <Text fontSize="xl" ml="2em" fontWeight="bold">
             Explore VMTs
@@ -85,7 +81,7 @@ const ExploreVMTs = (props) => {
               borderColor: "#365AD2",
               color: "#365AD2",
               borderWidth: "1.5px",
-              boxShadow:"lg"
+              boxShadow: "lg",
             }}
             zIndex="0"
           >
