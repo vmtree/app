@@ -49,7 +49,8 @@ const ExploreVMTs = (props) => {
   } = useApiContract(getVMTreesOptions);
   // get the tree data when the page loads
   useEffect(() => {
-    runContractFunction()
+    console.log('Hello, world!');
+    runContractFunction();
   }, []);     // eslint-disable-line react-hooks/exhaustive-deps
 
   if(!data) {
