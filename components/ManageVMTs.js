@@ -28,7 +28,7 @@ import { arboristAddress } from "../constants/addresses";
 import { isAddress, getAddress } from "@ethersproject/address";
 import { ConnectButton } from "web3uikit";
 import { TreeTable, Th, Trh, Tr, Td } from './Table';
-
+import { useRouter } from "next/router";
 
 function isNumberString(arg) {
     // 78 is the max length of characters of MaxUint256 in string form
@@ -40,7 +40,7 @@ const ManageVMTs = (props) => {
   const [linkPayer, setLinkPayer] = useState();
   const [amount, setAmount] = useState();
   // form handlers
-  const handleLinkPayer = (e) => setLinkPayer(e.target.value);
+  const handleLinkPayer = (e) => setLinkPayer(e.target.value);``
   const handleAmount = (e) => setAmount(e.target.value);
   // errors
   const linkPayerError = !linkPayer || !isAddress(linkPayer);
