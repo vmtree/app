@@ -175,6 +175,44 @@ const ExploreVMTs = (props) => {
     runContractFunction()
   }, []);     // eslint-disable-line react-hooks/exhaustive-deps
 
+  if(!data) {
+    return (
+      <Box paddingLeft="7%" paddingRight="7%">
+        <Flex>
+          <Text fontSize="xl" ml="2em" fontWeight="bold">
+            Explore VMTs
+          </Text>
+        </Flex>
+      
+      <Flex justifyContent="center" alignItems="center">
+          <Button
+            variant="solid"
+            size="sm"
+            borderRadius={155}
+            p={5}
+            pl={50}
+            pr={50}
+            colorScheme="facebook"
+            m={5}
+            onClick={() => runContractFunction()}
+            rightIcon={<ChevronDownIcon />}
+            bgColor="#365AD2"
+            color="#fff"
+            _hover={{
+              background: "#fff",
+              borderColor: "#365AD2",
+              color: "#365AD2",
+              borderWidth: "1.5px",
+            }}
+            zIndex="0"
+          >
+            See All Trees
+          </Button>
+        </Flex>
+      </Box>
+    )
+  }
+
   return (
     <Box paddingLeft="7%" paddingRight="7%">
       <Flex>
@@ -282,7 +320,7 @@ const ExploreVMTs = (props) => {
               );
             })}
         </Box>
-        <Button onClick={() => runContractFunction()}>See All Trees</Button>
+        
       </Box>
     </Box>
   );
