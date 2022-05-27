@@ -129,7 +129,7 @@ const ManageVMTs = (props) => {
             color="#365AD2"
             _hover={{
               background: "#365AD2",
-              borderColor:"#fff",
+              borderColor: "#fff",
               color: "#fff",
               borderWidth: "1.5px",
             }}
@@ -139,8 +139,18 @@ const ManageVMTs = (props) => {
           </Button>
         </Flex>
         <Stack ml="2em" mr="2em">
-          <Skeleton height="50px" borderRadius={155} />
-          <Skeleton height="50px" borderRadius={155} />
+          <Skeleton
+            height="50px"
+            borderRadius={155}
+            startColor="#F7FAFC"
+            endColor="#E2E8F0"
+          />
+          <Skeleton
+            height="50px"
+            borderRadius={155}
+            startColor="#F7FAFC"
+            endColor="#E2E8F0"
+          />
         </Stack>
       </Box>
     );
