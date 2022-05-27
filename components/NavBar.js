@@ -66,7 +66,7 @@ const MenuLinks = ({ isOpen, pageType }) => {
     >
       <Flex mr={10} alignItems="center" justifyContent="center">
         {/* TODO: add doc's link here */}
-        <Link href="/" _hover={{ textDecoration: "none" }}>
+        <Link href="https://github.com/vmtree/chainlink-vmt#readme" _hover={{ textDecoration: "none" }} isExternal>
           <Button
             variant="solid"
             size="md"

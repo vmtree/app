@@ -20,6 +20,7 @@ import {
   FormLabel,
   FormHelperText,
   FormErrorMessage,
+  useToast
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Icon, Input, Typography } from "web3uikit";
@@ -50,11 +51,40 @@ const Hero = ({ handleVMTreeCreation }) => {
     "0x0000000000000000000000000000000000000000"
   );
   const [links, setLinks] = useState("1")
+  
   // form handlers
   const handleNameChange = (e) => setName(e.target.value);
   const handleControllerChange = (e) => setController(e.target.value);
   const handleLinksChange = (e) => {
       setLinks(e.target.value || "1");
+  }
+
+  // modal related stuff
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const initialRef = React.useRef();
+  const finalRef = React.useRef();
+
+  //toast
+  const toast = useToast()
+
+  function showStatusToast() {
+    toast({
+          title: 'FORM SUBMIT',
+          description: 'Your VMTree is getting deployed !',
+          status: 'info',
+          duration: 4000,
+          isClosable: true,
+        })
+  }
+
+  function showSuccessToast() {
+    toast({
+          title: 'SUCCESS',
+          description: "Congrats! VMTree Created Successfully. Refresh page to see it.",
+          status: 'success',
+          duration: 9000,
+          isClosable: true,
+        })
   }
 
   // form error validators
@@ -80,61 +110,16 @@ const Hero = ({ handleVMTreeCreation }) => {
   async function handleCreateTree() {
     try {
         const tx = await Moralis.executeFunction(options());
+        onClose()
+        showStatusToast()
         const receipt = await tx.wait();
         const newTreeAddress = parseDeployLog(receipt).tree;
         console.log('newTreeAddress', newTreeAddress);
+        showSuccessToast()
     } catch(err) {
         console.log(err);
     }
   }
-
-  //   const { native } = useMoralisWeb3Api();
-//   const params = {
-//     chain: "rinkeby",
-//     address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
-//     function_name: "transferAndCall",
-//     abi: abi_deploy_tree,
-//     params: {
-//       to: "0xff41a716d5d8555491B3e58ae051765369F19148",
-//       value: "1",
-//       data: "",
-//     },
-//   };
-
-//   const { runContractFunction } = useWeb3Contract({
-//    chain: "rinkeby",
-//     address: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
-//     function_name: "transferAndCall",
-//     abi: abi_deploy_tree,
-//     params: {
-//       to: "0xff41a716d5d8555491B3e58ae051765369F19148",
-//       value: "1",
-//       data: "",
-//     },
-//   });
-
-//   const { fetch, data, error, isLoading } = useMoralisWeb3ApiCall(
-//     native.runContractFunction,
-//     { ...params }
-    
-//   );
-
-//   function handleCreateTree() {
-//     console.log("name: ", name);
-//     console.log("controller: ", controller);
-//     // fetch({ params: params });
-//     runContractFunction()
-//     console.log("data: ", data)
-//   }
-
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  const initialRef = React.useRef();
-  const finalRef = React.useRef();
-
-  // const { authenticate, isAuthenticated, user } = useMoralis();
-  // // const currUser = Moralis.User.current()
-  // // var wallet = user.get("ethAddress");
 
   return (
     <Box
@@ -205,7 +190,6 @@ const Hero = ({ handleVMTreeCreation }) => {
                 />
               </FormControl>
 
-              {/* TODO: min value should be 1 */}
               <FormControl mt={4} isRequired>
                 <FormLabel>LINKs to Prefund the VMTree</FormLabel>
                 <Input
@@ -250,8 +234,8 @@ const Hero = ({ handleVMTreeCreation }) => {
           borderColor="blackAlpha.300"
           width="50%"
           mb="5em"
-          // zIndex="-1"
         />
+
       </Flex>
     </Box>
   );

@@ -22,6 +22,8 @@ const Footer = () => {
       p="0"
       border="none"
       zIndex="-1"
+      left= "0"
+      bottom= "0"
     >
       <Text color="gray.300" mb="8em" letterSpacing="widest">
         A Chainlink 2022 Hackathon Project
@@ -46,7 +48,7 @@ const Footer = () => {
         <Flex flexDirection="column" >
           <Flex>
             <Link
-              href="https://github.com/vmtree/chainlink-vmt/"
+              href="https://github.com/vmtree/solidity"
               isExternal="true"
               sx={{ textDecoration: "none" }}
               _hover={{ textDecoration: "none" }}
@@ -63,9 +65,8 @@ const Footer = () => {
                 GITHUB
               </Button>
             </Link>
-            {/* TODO: add docs link here */}
             <Link
-              href="#"
+              href="https://github.com/vmtree/chainlink-vmt#readme"
               isExternal="true"
               sx={{ textDecoration: "none" }}
               _hover={{ textDecoration: "none" }}
