@@ -23,6 +23,7 @@ function isNumberString(arg) {
 }
 
 const ManageVMTs = (props) => {
+  // state
   const [myTrees, setMyTrees] = useState([]);
   const [linkPayer, setLinkPayer] = useState();
   const [amount, setAmount] = useState();
@@ -91,6 +92,8 @@ const ManageVMTs = (props) => {
       }
   }
 
+  // this prevents the admin panel from rendering if the user doesn't control
+  // or pay for a tree
   if (!isWeb3Enabled || !account || !myTrees.length) return null;
 
   return (
