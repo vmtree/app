@@ -73,7 +73,14 @@ const ManageVMTs = (props) => {
             return (getAddress(vmtree[3]) == getAddress(account))
                 || (getAddress(vmtree[2]) == getAddress(account));
         });
-        // setMyTrees(trees);
+        setMyTrees(trees);
+
+        console.log("........................>>")
+        console.log("........................ appId: ", process.env.NEXT_PUBLIC_APP_ID)
+        console.log("........................ serverUrl: ", process.env.NEXT_PUBLIC_SERVER_URL)
+        console.log("........................ myTrees: ", myTrees)
+        console.log("........................ linkPayer: ", linkPayer);
+        console.log("........................ getVMTreesOptions: ", getVMTreesOptions)
     }
   }, [data, account])
 

@@ -41,10 +41,6 @@ const ExploreVMTs = (props) => {
   // get the tree data when the page loads
   useEffect(() => {
     runContractFunction();
-    console.log("........................>>")
-    console.log("........................ appId: ", process.env.NEXT_PUBLIC_APP_ID)
-    console.log("........................ serverUrl: ", process.env.NEXT_PUBLIC_SERVER_URL)
-    console.log("........................ data: ", data)
   }, [runContractFunction]);
 
   if(!data){
@@ -78,12 +74,12 @@ const ExploreVMTs = (props) => {
         <TableHeader/>
         <Box pt={10}>
         <Stack ml="2em" mr="2em">
-          <Skeleton height='50px'/>
-          <Skeleton height='50px'/>
-          <Skeleton height='50px'/>
-          <Skeleton height='50px'/>
-          <Skeleton height='50px'/>
-          <Skeleton height='50px'/>
+          <Skeleton height='50px' borderRadius={155}/>
+          <Skeleton height='50px' borderRadius={155}/>
+          <Skeleton height='50px' borderRadius={155}/>
+          <Skeleton height='50px' borderRadius={155}/>
+          <Skeleton height='50px' borderRadius={155}/>
+          <Skeleton height='50px' borderRadius={155}/>
         </Stack>
         </Box>
       </Box>
