@@ -41,6 +41,23 @@ const ExploreVMTs = (props) => {
   // get the tree data when the page loads
   useEffect(() => {
     runContractFunction();
+
+    console.log("........................>>");
+    console.log(
+      "........................ appId: ",
+      process.env.NEXT_PUBLIC_APP_ID
+    );
+    console.log(
+      "........................ serverUrl: ",
+      process.env.NEXT_PUBLIC_SERVER_URL
+    );
+    console.log("........................ myTrees: ", myTrees);
+    console.log("........................ linkPayer: ", linkPayer);
+    console.log(
+      "........................ getVMTreesOptions: ",
+      getVMTreesOptions
+    );
+    
   }, [runContractFunction]);
 
   if(!data){
