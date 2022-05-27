@@ -14,36 +14,31 @@ import VMTable from "../components/ManageVMTs";
 import ManageVMTs from "../components/ManageVMTs";
 import ExploreVMTs from "../components/ExploreVMTs";
 import Footer from "../components/Footer";
-import { ConnectButton } from "web3uikit";
-import { useWeb3Contract } from "react-moralis";
-
-import { abi_deploy_tree } from "../constants/abi";
+// import { ConnectButton } from "web3uikit";
+// import { useWeb3Contract } from "react-moralis";
+// import { abi_deploy_tree } from "../constants/abi";
 import Head from "next/head";
 
 export default function Dapp() {
-  const { isAuthenticated, authenticate, user, logout, isLoggingOut } =
-    useMoralis();
-  
-  const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709";    //TODO: move out later
+//   const { isAuthenticated, authenticate, user, logout, isLoggingOut } =
+//     useMoralis();
+//   const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709";    //TODO: move out later
 
-  // [contract] get list: https://github.com/vmtree/solidity/blob/main/contracts/Arborist.sol#L253
-  // [contract] deploy & manage trees: https://github.com/vmtree/solidity/blob/main/contracts/interfaces/ILinkToken.sol#L16
+//   const { runContractFunction } = useWeb3Contract({
+//     abi: abi_deploy_tree,
+//     contractAddress: address_deploy_trees,
+//     functionName: "transferAndCall",
+//     params: {
+//       to: 1,
+//       value: 1,
+//       data: ""
+//     },
+//   });
 
-  const { runContractFunction } = useWeb3Contract({
-    abi: abi_deploy_tree,
-    contractAddress: address_deploy_trees,
-    functionName: "transferAndCall",
-    params: {
-      to: 1,
-      value: 1,
-      data: ""
-    },
-  });
-
-  const handleVMTreeCreation = () => {
-    runContractFunction();
-    console.log(".........................");
-  };
+//   const handleVMTreeCreation = () => {
+//     runContractFunction();
+//     console.log(".........................");
+//   };
 
   return (
     <>
@@ -52,8 +47,8 @@ export default function Dapp() {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <Box w="100vw" maxW="100vw" mt="0" m="auto">
-        <NavBar as="header" position="fixed" w="100%" pageType="dapp_page" />
-        <Hero handleVMTreeCreation={handleVMTreeCreation} />
+        <NavBar as="header" position="fixed" w="100%" pageType="dapp_page"/>
+        <Hero />
         <ManageVMTs />
         <ExploreVMTs />
         <Footer />
@@ -61,3 +56,4 @@ export default function Dapp() {
     </>
   );
 }
+{/* <Hero handleVMTreeCreation={handleVMTreeCreation} /> */}

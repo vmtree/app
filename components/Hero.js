@@ -24,14 +24,11 @@ import {
 import { useState } from "react";
 import { Icon, Input, Typography } from "web3uikit";
 
+import { useMoralis } from "react-moralis";
+import { arboristAbi, linkTokenAbi } from "../constants/abi";
+import { arboristAddress, linkTokenAddress } from "../constants/addresses";
 
-import { useWeb3Contract } from "react-moralis";
-import { useMoralis, useMoralisWeb3ApiCall } from "react-moralis";
-
-import { abi_deploy_tree } from "../constants/abi";
-import { useMoralisWeb3Api, useWeb3ExecuteFunction } from "react-moralis";
-
-import { defaultAbiCoder }  from "@ethersproject/abi/";
+import { Interface, defaultAbiCoder }  from "@ethersproject/abi/";
 import { parseUnits } from "@ethersproject/units";
 
 // transferAndCall `data` encoder
@@ -41,8 +38,10 @@ function encodeData(controller, name) {
   return d;
 }
 
-// chainlink token address
-const address_deploy_trees = "0x01BE23585060835E02B77ef475b0Cc51aA1e0709"; //TODO: move out later
+function parseDeployLog(receipt) { 
+    const iface = new Interface(arboristAbi);
+    return iface.parseLog(receipt.logs[2]).args;
+}
 
 const Hero = ({ handleVMTreeCreation }) => {
   // state
@@ -63,14 +62,14 @@ const Hero = ({ handleVMTreeCreation }) => {
   const isControllerError = controller === "";
   const isLinksError = links ? parseUnits(links, 18).lt(parseUnits("1")) : true;
 
-  // format the transaction data for metamask signature
-  const params = () => ({
+  // format the transaction data for metamask tx signature
+  const options = () => ({
     chain: "rinkeby",
-    contractAddress: "0x01BE23585060835E02B77ef475b0Cc51aA1e0709",
+    contractAddress: linkTokenAddress,
     functionName: "transferAndCall",
-    abi: abi_deploy_tree,
+    abi: linkTokenAbi,
     params: {
-      _to: "0xff41a716d5d8555491b3e58ae051765369f19148",
+      _to: arboristAddress,
       _value: parseUnits(links, 18),
       _data: encodeData(controller, name)
      },
@@ -80,11 +79,10 @@ const Hero = ({ handleVMTreeCreation }) => {
 
   async function handleCreateTree() {
     try {
-        const tx = await Moralis.executeFunction(params());
-        console.log(tx);
-        console.log(tx.hash);
+        const tx = await Moralis.executeFunction(options());
         const receipt = await tx.wait();
-        console.log(receipt);
+        const newTreeAddress = parseDeployLog(receipt).tree;
+        console.log('newTreeAddress', newTreeAddress);
     } catch(err) {
         console.log(err);
     }
@@ -133,6 +131,10 @@ const Hero = ({ handleVMTreeCreation }) => {
 
   const initialRef = React.useRef();
   const finalRef = React.useRef();
+
+  // const { authenticate, isAuthenticated, user } = useMoralis();
+  // // const currUser = Moralis.User.current()
+  // // var wallet = user.get("ethAddress");
 
   return (
     <Box
@@ -235,11 +237,11 @@ const Hero = ({ handleVMTreeCreation }) => {
                   borderWidth: "1.5px",
                 }}
                 onClick={() => {
-                  handleCreateTree();
+                  handleCreateTree()
                 }}
               >
-                Deploy It!
-              </Button>
+                      Deploy It!
+                    </Button>
             </ModalFooter>
           </ModalContent>
         </Modal>
