@@ -237,7 +237,8 @@ const ExploreVMTs = (props) => {
         </SimpleGrid>
 
         <Box>
-        { data && data[1].map((vmtree, index) => {
+          {data &&
+            data[1].map((vmtree, index) => {
               // The struct returns data in an array!
               //   struct VMTreeData {
               //     string name;
@@ -248,38 +249,40 @@ const ExploreVMTs = (props) => {
               //   }
               return (
                 <Flex
-                justifyContent="space-between"
-                backgroundColor="#fff"
-                borderRadius={155}
-                boxShadow="md"
-                padding="1em"
-                pl="5em"
-                pr="5em"
-                fontSize="smaller"
-                color="gray.600"
-                margin="1em"
-                key={vmtree[2]}
-              >
-                <Text>
-                    { vmtree[1] ? <Image src="enabled_vmt.svg" alt="enabled" />
-                        : <Image src="disabled_vmt.svg" alt="disabled" />
-                    }
-                </Text>
-                <Text>{/* name */ vmtree[0]}</Text>
-                <Text>{/* contractAddress */ vmtree[2]}</Text>
-                <Text>{/* controller */ vmtree[3]}</Text>
-                <Text>{/* linkPayer */ vmtree[4]}</Text>
-                <Text isNumeric>{/* linkPayerBalance */ }</Text>
-                <Text>
-                  <Link href="#">
-                    <SettingsIcon />
-                  </Link>
-                </Text>
-              </Flex>
+                  justifyContent="space-between"
+                  backgroundColor="#fff"
+                  borderRadius={155}
+                  boxShadow="md"
+                  padding="1em"
+                  pl="5em"
+                  pr="5em"
+                  fontSize="smaller"
+                  color="gray.600"
+                  margin="1em"
+                  key={vmtree[2]}
+                >
+                  <Text>
+                    {vmtree[1] ? (
+                      <Image src="enabled_vmt.svg" alt="enabled" />
+                    ) : (
+                      <Image src="disabled_vmt.svg" alt="disabled" />
+                    )}
+                  </Text>
+                  <Text>{/* name */ vmtree[0]}</Text>
+                  <Text>{/* contractAddress */ vmtree[2]}</Text>
+                  <Text>{/* controller */ vmtree[3]}</Text>
+                  <Text>{/* linkPayer */ vmtree[4]}</Text>
+                  <Text isNumeric>{/* linkPayerBalance */}</Text>
+                  <Text>
+                    <Link href="#">
+                      <SettingsIcon />
+                    </Link>
+                  </Text>
+                </Flex>
               );
-            })
-          }
+            })}
         </Box>
+        <Button onClick={() => runContractFunction()}>See All Trees</Button>
       </Box>
     </Box>
   );
