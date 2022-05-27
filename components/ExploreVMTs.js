@@ -36,8 +36,8 @@ const ExploreVMTs = (props) => {
   } = useApiContract(getVMTreesOptions);
   // get the tree data when the page loads
   useEffect(() => {
-    runContractFunction()
-  }, []);
+    runContractFunction();
+  }, [runContractFunction]);
 
   return (
     <Box paddingLeft="7%" paddingRight="7%">
@@ -112,33 +112,36 @@ const ExploreVMTs = (props) => {
               //   }
               return (
                 <Flex
-                justifyContent="space-between"
-                backgroundColor="#fff"
-                borderRadius={155}
-                boxShadow="md"
-                padding="1em"
-                pl="5em"
-                pr="5em"
-                fontSize="smaller"
-                color="gray.600"
-                margin="1em"
-              >
-                <Text>
-                    { vmtree[1] ? <Image src="enabled_vmt.svg" alt="enabled" />
-                        : <Image src="disabled_vmt.svg" alt="disabled" />
-                    }
-                </Text>
-                <Text>{/* name */ vmtree[0]}</Text>
-                <Text>{/* contractAddress */ vmtree[2]}</Text>
-                <Text>{/* controller */ vmtree[3]}</Text>
-                <Text>{/* linkPayer */ vmtree[4]}</Text>
-                <Text isNumeric>{/* linkPayerBalance */ }</Text>
-                <Text>
-                  <Link href="#">
-                    <SettingsIcon />
-                  </Link>
-                </Text>
-              </Flex>
+                  justifyContent="space-between"
+                  backgroundColor="#fff"
+                  borderRadius={155}
+                  boxShadow="md"
+                  padding="1em"
+                  pl="5em"
+                  pr="5em"
+                  fontSize="smaller"
+                  color="gray.600"
+                  margin="1em"
+                  key={vmtree[0]}
+                >
+                  <Text>
+                    {vmtree[1] ? (
+                      <Image src="enabled_vmt.svg" alt="enabled" />
+                    ) : (
+                      <Image src="disabled_vmt.svg" alt="disabled" />
+                    )}
+                  </Text>
+                  <Text>{/* name */ vmtree[0]}</Text>
+                  <Text>{/* contractAddress */ vmtree[2]}</Text>
+                  <Text>{/* controller */ vmtree[3]}</Text>
+                  <Text>{/* linkPayer */ vmtree[4]}</Text>
+                  <Text isNumeric>{/* linkPayerBalance */}</Text>
+                  <Text>
+                    <Link href="#">
+                      <SettingsIcon />
+                    </Link>
+                  </Text>
+                </Flex>
               );
             })
           }
