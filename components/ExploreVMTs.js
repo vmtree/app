@@ -10,8 +10,35 @@ import {
   GridItem,
   SimpleGrid,
 } from "@chakra-ui/react";
+import { useEffect } from "react";
+import { useApiContract } from "react-moralis";
+import { arboristAbi } from "../constants/abi";
+import { arboristAddress } from "../constants/addresses";
 
 const ExploreVMTs = (props) => {
+
+  // treats arborist contract as backend database
+  const getVMTreesOptions = {
+    chain: "rinkeby",
+    address: arboristAddress,
+    functionName: "getVMTrees",
+    abi: arboristAbi,
+    params: {},
+  };
+  // useApiContract connects to moralis provider without needing user's wallet
+  // to be connected
+  const {
+    runContractFunction,
+    data,
+    error,
+    isLoading,
+    isFetching,
+  } = useApiContract(getVMTreesOptions);
+  // get the tree data when the page loads
+  useEffect(() => {
+    runContractFunction()
+  }, []);
+
   return (
     <Box paddingLeft="7%" paddingRight="7%">
       <Flex>
@@ -74,289 +101,48 @@ const ExploreVMTs = (props) => {
         </SimpleGrid>
 
         <Box>
-          <Flex
-            justifyContent="space-between"
-            backgroundColor="#fff"
-            borderRadius={155}
-            boxShadow="md"
-            padding="1em"
-            pl="5em"
-            pr="5em"
-            fontSize="smaller"
-            color="gray.600"
-            margin="1em"
-          >
-            <Text>
-              <Image src="enabled_vmt.svg" alt="enabled" />
-            </Text>
-            <Text>0xdAC17F958D2ee523a2206206994597C13D831ec7</Text>
-            <Text>Test Merkle Tree #1</Text>
-            <Text>28.7502 LINK</Text>
-            <Text isNumeric>72</Text>
-            <Text>10.05.2022</Text>
-            <Text>
-              <Link href="#">
-                <SettingsIcon />
-              </Link>
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent="space-between"
-            backgroundColor="#fff"
-            borderRadius={155}
-            boxShadow="md"
-            padding="1em"
-            pl="5em"
-            pr="5em"
-            fontSize="smaller"
-            color="gray.600"
-            margin="1em"
-          >
-            <Image src="enabled_vmt.svg" alt="enabled" />
-            <Text>0xdAC17F958D2ee523a2206206994597C13D831ec7</Text>
-            <Text>Test Merkle Tree #1</Text>
-            <Text>28.7502 LINK</Text>
-            <Text isNumeric>72</Text>
-            <Text>10.05.2022</Text>
-            <Text>
-              <Link href="#">
-                <SettingsIcon />
-              </Link>
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent="space-between"
-            backgroundColor="#fff"
-            borderRadius={155}
-            boxShadow="md"
-            padding="1em"
-            pl="5em"
-            pr="5em"
-            fontSize="smaller"
-            color="gray.600"
-            margin="1em"
-          >
-            <Text>
-              <Image src="enabled_vmt.svg" alt="enabled" />
-            </Text>
-            <Text>0xdAC17F958D2ee523a2206206994597C13D831ec7</Text>
-            <Text>Test Merkle Tree #1</Text>
-            <Text>28.7502 LINK</Text>
-            <Text isNumeric>72</Text>
-            <Text>10.05.2022</Text>
-            <Text>
-              <Link href="#">
-                <SettingsIcon />
-              </Link>
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent="space-between"
-            backgroundColor="#fff"
-            borderRadius={155}
-            boxShadow="md"
-            padding="1em"
-            pl="5em"
-            pr="5em"
-            fontSize="smaller"
-            color="gray.600"
-            margin="1em"
-          >
-            <Text>
-              <Image src="enabled_vmt.svg" alt="enabled" />
-            </Text>
-            <Text>0xdAC17F958D2ee523a2206206994597C13D831ec7</Text>
-            <Text>Test Merkle Tree #1</Text>
-            <Text>28.7502 LINK</Text>
-            <Text isNumeric>72</Text>
-            <Text>10.05.2022</Text>
-            <Text>
-              <Link href="#">
-                <SettingsIcon />
-              </Link>
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent="space-between"
-            backgroundColor="#fff"
-            borderRadius={155}
-            boxShadow="md"
-            padding="1em"
-            pl="5em"
-            pr="5em"
-            fontSize="smaller"
-            color="gray.600"
-            margin="1em"
-          >
-            <Text>
-              <Image src="enabled_vmt.svg" alt="enabled" />
-            </Text>
-            <Text>0xdAC17F958D2ee523a2206206994597C13D831ec7</Text>
-            <Text>Test Merkle Tree #1</Text>
-            <Text>28.7502 LINK</Text>
-            <Text isNumeric>72</Text>
-            <Text>10.05.2022</Text>
-            <Text>
-              <Link href="#">
-                <SettingsIcon />
-              </Link>
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent="space-between"
-            backgroundColor="#fff"
-            borderRadius={155}
-            boxShadow="md"
-            padding="1em"
-            pl="5em"
-            pr="5em"
-            fontSize="smaller"
-            color="gray.600"
-            margin="1em"
-          >
-            <Text>
-              <Image src="enabled_vmt.svg" alt="enabled" />
-            </Text>
-            <Text>0xdAC17F958D2ee523a2206206994597C13D831ec7</Text>
-            <Text>Test Merkle Tree #1</Text>
-            <Text>28.7502 LINK</Text>
-            <Text isNumeric>72</Text>
-            <Text>10.05.2022</Text>
-            <Text>
-              <Link href="#">
-                <SettingsIcon />
-              </Link>
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent="space-between"
-            backgroundColor="#fff"
-            borderRadius={155}
-            boxShadow="md"
-            padding="1em"
-            pl="5em"
-            pr="5em"
-            fontSize="smaller"
-            color="gray.600"
-            margin="1em"
-          >
-            <Text>
-              <Image src="enabled_vmt.svg" alt="enabled" />
-            </Text>
-            <Text>0xdAC17F958D2ee523a2206206994597C13D831ec7</Text>
-            <Text>Test Merkle Tree #1</Text>
-            <Text>28.7502 LINK</Text>
-            <Text isNumeric>72</Text>
-            <Text>10.05.2022</Text>
-            <Text>
-              <Link href="#">
-                <SettingsIcon />
-              </Link>
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent="space-between"
-            backgroundColor="#fff"
-            borderRadius={155}
-            boxShadow="md"
-            padding="1em"
-            pl="5em"
-            pr="5em"
-            fontSize="smaller"
-            color="gray.600"
-            margin="1em"
-          >
-            <Text>
-              <Image src="enabled_vmt.svg" alt="enabled" />
-            </Text>
-            <Text>0xdAC17F958D2ee523a2206206994597C13D831ec7</Text>
-            <Text>Test Merkle Tree #1</Text>
-            <Text>28.7502 LINK</Text>
-            <Text isNumeric>72</Text>
-            <Text>10.05.2022</Text>
-            <Text>
-              <Link href="#">
-                <SettingsIcon />
-              </Link>
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent="space-between"
-            backgroundColor="#fff"
-            borderRadius={155}
-            boxShadow="md"
-            padding="1em"
-            pl="5em"
-            pr="5em"
-            fontSize="smaller"
-            color="gray.600"
-            margin="1em"
-          >
-            <Text>
-              <Image src="enabled_vmt.svg" alt="enabled" />
-            </Text>
-            <Text>0xdAC17F958D2ee523a2206206994597C13D831ec7</Text>
-            <Text>Test Merkle Tree #1</Text>
-            <Text>28.7502 LINK</Text>
-            <Text isNumeric>72</Text>
-            <Text>10.05.2022</Text>
-            <Text>
-              <Link href="#">
-                <SettingsIcon />
-              </Link>
-            </Text>
-          </Flex>
-          <Flex
-            justifyContent="space-between"
-            backgroundColor="#fff"
-            borderRadius={155}
-            boxShadow="md"
-            padding="1em"
-            pl="5em"
-            pr="5em"
-            fontSize="smaller"
-            color="gray.600"
-            margin="1em"
-          >
-            <Text>
-              <Image src="enabled_vmt.svg" alt="enabled" />
-            </Text>
-            <Text>0xdAC17F958D2ee523a2206206994597C13D831ec7</Text>
-            <Text>Test Merkle Tree #1</Text>
-            <Text>28.7502 LINK</Text>
-            <Text isNumeric>72</Text>
-            <Text>10.05.2022</Text>
-            <Text>
-              <Link href="#">
-                <SettingsIcon />
-              </Link>
-            </Text>
-          </Flex>
+        { data && data[1].map((vmtree, index) => {
+              // The struct returns data in an array!
+              //   struct VMTreeData {
+              //     string name;
+              //     bool isActive;
+              //     address contractAddress;
+              //     address controller;
+              //     address linkPayer;
+              //   }
+              return (
+                <Flex
+                justifyContent="space-between"
+                backgroundColor="#fff"
+                borderRadius={155}
+                boxShadow="md"
+                padding="1em"
+                pl="5em"
+                pr="5em"
+                fontSize="smaller"
+                color="gray.600"
+                margin="1em"
+              >
+                <Text>
+                    { vmtree[1] ? <Image src="enabled_vmt.svg" alt="enabled" />
+                        : <Image src="disabled_vmt.svg" alt="disabled" />
+                    }
+                </Text>
+                <Text>{/* name */ vmtree[0]}</Text>
+                <Text>{/* contractAddress */ vmtree[2]}</Text>
+                <Text>{/* controller */ vmtree[3]}</Text>
+                <Text>{/* linkPayer */ vmtree[4]}</Text>
+                <Text isNumeric>{/* linkPayerBalance */ }</Text>
+                <Text>
+                  <Link href="#">
+                    <SettingsIcon />
+                  </Link>
+                </Text>
+              </Flex>
+              );
+            })
+          }
         </Box>
-
-        <Flex
-          flexDirection="column"
-          justifyContent="space-between"
-          alignItems="center"
-          mt="3em"
-        >
-          <Link isExternal="true" sx={{ textDecoration: "none" }}>
-            <Button
-              variant="solid"
-              size="sm"
-              pl="2em"
-              pr="1em"
-              borderRadius={155}
-              bg="#365AD2"
-              color="#fff"
-              rightIcon={<ChevronDownIcon />}
-              _hover={{ background: "#fff", color: "#365AD2" }}
-              // zIndex="-1"
-            >
-              See More
-            </Button>
-          </Link>
-        </Flex>
       </Box>
     </Box>
   );
