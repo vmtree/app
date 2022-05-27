@@ -88,10 +88,10 @@ const ExploreVMTs = (props) => {
             }}
             zIndex="0"
           >
-            See Existing VMTrees
+            Load Existing Trees
           </Button>
         </Flex>
-        <Stack ml="2em" mr="2em">
+        {/* <Stack ml="2em" mr="2em">
           <Skeleton height="50px" borderRadius={155} startColor="#F7FAFC"
             endColor="#E2E8F0"/>
           <Skeleton height="50px" borderRadius={155} startColor="#F7FAFC"
@@ -104,7 +104,7 @@ const ExploreVMTs = (props) => {
             endColor="#E2E8F0"/>
           <Skeleton height="50px" borderRadius={155} startColor="#F7FAFC"
             endColor="#E2E8F0"/>
-        </Stack>
+        </Stack> */}
       </Box>
     );
   }

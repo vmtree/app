@@ -101,7 +101,7 @@ const ManageVMTs = (props) => {
     }
   }
 
-  if (!isWeb3Enabled || !account) {
+  if (!isWeb3Enabled || !account || !myTrees.length) {
     return null;
   }
 
@@ -110,11 +110,11 @@ const ManageVMTs = (props) => {
       <Box paddingLeft="7%" paddingRight="7%">
         <Flex>
           <Text fontSize="xl" ml="2em" fontWeight="bold">
-            Manage VMTs
+            Load Your VMTrees
           </Text>
         </Flex>
 
-        <Flex justifyContent="center" alignItems="center">
+        {/* <Flex justifyContent="center" alignItems="center">
           <Button
             variant="solid"
             size="sm"
@@ -151,7 +151,7 @@ const ManageVMTs = (props) => {
             startColor="#F7FAFC"
             endColor="#E2E8F0"
           />
-        </Stack>
+        </Stack> */}
       </Box>
     );
   }
