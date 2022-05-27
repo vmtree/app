@@ -42,7 +42,7 @@ const ExploreVMTs = (props) => {
   useEffect(() => {
     runContractFunction();
 
-    console.log("........................>>");
+    console.log("[ExploreVMTs] ........................>>");
     console.log(
       "........................ appId: ",
       process.env.NEXT_PUBLIC_APP_ID
@@ -51,13 +51,12 @@ const ExploreVMTs = (props) => {
       "........................ serverUrl: ",
       process.env.NEXT_PUBLIC_SERVER_URL
     );
-    console.log("........................ myTrees: ", myTrees);
-    console.log("........................ linkPayer: ", linkPayer);
+    console.log("........................ data: ", data);
     console.log(
       "........................ getVMTreesOptions: ",
       getVMTreesOptions
     );
-    
+
   }, [runContractFunction]);
 
   if(!data){

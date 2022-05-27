@@ -75,7 +75,7 @@ const ManageVMTs = (props) => {
         });
         setMyTrees(trees);
 
-        console.log("........................>>")
+        console.log("[ManageVMTs] ........................>>");
         console.log("........................ appId: ", process.env.NEXT_PUBLIC_APP_ID)
         console.log("........................ serverUrl: ", process.env.NEXT_PUBLIC_SERVER_URL)
         console.log("........................ myTrees: ", myTrees)
