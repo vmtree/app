@@ -22,10 +22,17 @@ export default function Dapp() {
     <>
       <Head>
         <title>VMTree | DAPP </title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
-      <Box w="100vw" maxW="100vw" mt="0" m="auto">
-        <NavBar as="header" position="fixed" w="100%" pageType="dapp_page"/>
+      <Box
+        w="100vw"
+        maxW="100vw"
+        mt="0"
+        m="auto"
+        overflow-x="hidden"
+        overflowY="none"
+      >
+        <NavBar as="header" position="fixed" w="100%" pageType="dapp_page" />
         <Hero />
         <ManageVMTs />
         <ExploreVMTs />

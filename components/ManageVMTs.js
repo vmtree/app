@@ -60,7 +60,7 @@ const ManageVMTs = (props) => {
     useApiContract(getVMTreesOptions);
   // get the tree data when the page loads
   useEffect(() => {
-    runContractFunction();
+    // runContractFunction();
   }, []);       // eslint-disable-line react-hooks/exhaustive-deps
 
   // to make transactions, we need to be connected to the user's wallet.
@@ -101,7 +101,7 @@ const ManageVMTs = (props) => {
     }
   }
 
-  if (!isWeb3Enabled || !account || !myTrees.length) {
+  if (!isWeb3Enabled || !account) {
     return null;
   }
 
@@ -114,7 +114,7 @@ const ManageVMTs = (props) => {
           </Text>
         </Flex>
 
-        {/* <Flex justifyContent="center" alignItems="center">
+        <Flex justifyContent="center" alignItems="center">
           <Button
             variant="solid"
             size="sm"
@@ -132,13 +132,14 @@ const ManageVMTs = (props) => {
               borderColor: "#fff",
               color: "#fff",
               borderWidth: "1.5px",
+              boxShadow:"lg"
             }}
             zIndex="0"
           >
-            See Your VMTrees
+            Load Your VMTrees
           </Button>
         </Flex>
-        <Stack ml="2em" mr="2em">
+        {/* <Stack ml="2em" mr="2em">
           <Skeleton
             height="50px"
             borderRadius={155}

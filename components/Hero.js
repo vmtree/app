@@ -150,6 +150,7 @@ const Hero = ({ handleVMTreeCreation }) => {
             borderColor: "#365AD2",
             color: "#365AD2",
             borderWidth: "1.5px",
+            boxShadow:"lg"
           }}
           onClick={onOpen}
           mb="1em"
