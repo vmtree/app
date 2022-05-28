@@ -50,7 +50,12 @@ const LandingPage = (props) => {
               p="10px"
               h="full"
             >
-              <Image src="/vmt_logo_white.svg" boxSize="280px" alt="VMTree" zIndex="2"/>
+              <Image
+                src="/vmt_logo_white.svg"
+                boxSize="280px"
+                alt="VMTree"
+                zIndex="2"
+              />
             </Flex>
             <Flex mr="20%" flexDirection="column" h="full">
               <Heading
@@ -60,10 +65,12 @@ const LandingPage = (props) => {
               >
                 Verifiable Merkle Trees
               </Heading>
-              <Text letterSpacing="widest" textTransform="uppercase">affordable privacy on-chain</Text>
-              <Link 
-                sx={{ textDecoration: "none" }} 
-                _hover={{ textDecoration: "none" }} 
+              <Text letterSpacing="widest" textTransform="uppercase">
+                affordable privacy on-chain
+              </Text>
+              <Link
+                sx={{ textDecoration: "none" }}
+                _hover={{ textDecoration: "none" }}
                 href="/dapp"
                 pt="5px"
               >
@@ -76,7 +83,7 @@ const LandingPage = (props) => {
                   borderRadius={155}
                   bg="#365AD2"
                   color="#fff"
-                  boxShadow='dark-lg'
+                  boxShadow="dark-lg"
                   rightIcon={<ChevronRightIcon />}
                   _hover={{ background: "#fff", color: "#365AD2" }}
                 >
@@ -113,10 +120,11 @@ const LandingPage = (props) => {
                 VMTree
               </Heading>
               <Text letterSpacing="widest">Verifiable Merkle Trees</Text>
-              <Link 
-              sx={{ textDecoration: "none" }}
-               _hover={{ textDecoration: "none" }}
-                href="/dapp">
+              <Link
+                sx={{ textDecoration: "none" }}
+                _hover={{ textDecoration: "none" }}
+                href="/dapp"
+              >
                 <Button
                   variant="solid"
                   size="sm"
@@ -127,8 +135,12 @@ const LandingPage = (props) => {
                   bg="#365AD2"
                   color="#fff"
                   rightIcon={<ChevronRightIcon />}
-                  boxShadow='dark-lg'
-                  _hover={{ background: "#fff", color: "#365AD2", textDecoration: "none" }}
+                  boxShadow="dark-lg"
+                  _hover={{
+                    background: "#fff",
+                    color: "#365AD2",
+                    textDecoration: "none",
+                  }}
                 >
                   Try it!
                 </Button>
@@ -162,12 +174,12 @@ const LandingPage = (props) => {
             justifyContent="center"
             alignItems="center"
           >
-            <Tooltip label='Dummy Numbers'>
+            <Tooltip label="Dummy Numbers">
               <Text fontSize="2xl" color="#fff">
                 38
               </Text>
             </Tooltip>
-            
+
             <Text fontSize="sm" color="#fff">
               Merke Trees Deployed
             </Text>
@@ -180,7 +192,7 @@ const LandingPage = (props) => {
             justifyContent="center"
             alignItems="center"
           >
-            <Tooltip label='Dummy Numbers'>
+            <Tooltip label="Dummy Numbers">
               <Text fontSize="2xl" color="#fff">
                 287
               </Text>
@@ -197,7 +209,7 @@ const LandingPage = (props) => {
             justifyContent="center"
             alignItems="center"
           >
-            <Tooltip label='Dummy Numbers'>
+            <Tooltip label="Dummy Numbers">
               <Text fontSize="2xl" color="#fff">
                 5982
               </Text>
@@ -216,7 +228,6 @@ const LandingPage = (props) => {
             borderRadius="50%"
             boxShadow="dark-lg"
             pos="absolute"
-            
           >
             <ChevronDownIcon
               boxSize="10"
@@ -229,8 +240,10 @@ const LandingPage = (props) => {
 
         <Flex align="center" w="50%" mt="8%">
           <Text textAlign="center" letterSpacing="wide">
-            Introducing an evolution in cryptographically guaranteed composable smart contracts.  <br/>
-            Utilizing Chainlink for off-chain computation, entirely new paradigms of anonymity are possible. <br/>
+            Introducing an evolution in cryptographically guaranteed composable
+            smart contracts. <br />
+            Utilizing Chainlink for off-chain computation, entirely new
+            paradigms of anonymity are possible. <br />
             All for significantly less gas fees!
           </Text>
         </Flex>
@@ -257,11 +270,17 @@ const LandingPage = (props) => {
             VMTs
           </Text>
           <Text mt="1em">
-            VMTrees use merkle trees combined with cryptographic proof for a variety of use cases such as  anonymous airdrops, governance voting and privacy mixers. 
-            <br/><br/> 
-            This is not limited to Ethereum - using Chainlink allows the technology to be layer 1 blockchain agnostic.  
-            <br/><br/>
-            Please read our documentation to learn how Verifiable Merkle Trees work under the hood.
+            VMTrees use merkle trees combined with cryptographic proof for a
+            variety of use cases such as anonymous airdrops, governance voting
+            and privacy mixers.
+            <br />
+            <br />
+            This is not limited to Ethereum - using Chainlink allows the
+            technology to be layer 1 blockchain agnostic.
+            <br />
+            <br />
+            Please read our documentation to learn how Verifiable Merkle Trees
+            work under the hood.
           </Text>
         </Flex>
         <Flex flexDirection="column" mr="10%" alignItems="center">
@@ -270,7 +289,7 @@ const LandingPage = (props) => {
             isExternal
             _hover={{ textDecoration: "none", boxShadow: "2xl" }}
             borderRadius="50%"
-            boxShadow='dark-lg'
+            boxShadow="dark-lg"
             boxSize="80px"
             alignItems="center"
             alignContent="center"
@@ -282,10 +301,13 @@ const LandingPage = (props) => {
               pt="20px"
             />
           </Link>
-          <Link href="https://github.com/vmtree/chainlink-vmt#readme" _hover={{ textDecoration: "none" }} mt="1em" isExternal>
-            <Text fontWeight="semibold">
-              Read the Docs
-            </Text>
+          <Link
+            href="https://github.com/vmtree/chainlink-vmt#readme"
+            _hover={{ textDecoration: "none" }}
+            mt="1em"
+            isExternal
+          >
+            <Text fontWeight="semibold">Read the Docs</Text>
           </Link>
         </Flex>
       </Flex>
@@ -310,10 +332,10 @@ const LandingPage = (props) => {
       </Flex>
 
       <Container justifyContent="center" mt="5%">
-        <AspectRatio maxW="560px" ratio={16 / 9}>
+        <AspectRatio maxW="560px" ratio={4 / 3}>
           <iframe
             title="naruto"
-            src="https://www.youtube.com/embed/ASFzsgIurMQ"
+            src="https://www.youtube.com/embed/FZeOU83Ktj8"
             allowFullScreen
           />
         </AspectRatio>
@@ -339,28 +361,32 @@ const LandingPage = (props) => {
           <Flex justifyContent="center" alignItems="center" mb="20px">
             <Flex mr="80px">
               <Box
-              maxW={"320px"}
-              w={"full"}
-              rounded={"lg"}
-              pr={15}
-              pl={15}
-              textAlign={"center"}
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Avatar size={"xl"} src="/u_twisterDev.png" alt="Twister Dev" />
-              <Text fontWeight={600} color={"gray.500"} mb={1}>
-                Twister Dev {'   '}
-              </Text>
-              <Stack align={"center"} justify={"center"} direction={"row"}>
-                <Link href="https://github.com/twister-dev">
+                maxW={"320px"}
+                w={"full"}
+                rounded={"lg"}
+                pr={15}
+                pl={15}
+                textAlign={"center"}
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Avatar size={"xl"} src="/u_twisterDev.png" alt="Twister Dev" />
+                <Text fontWeight={600} color={"gray.500"} mb={1}>
+                  Twister Dev {"   "}
+                </Text>
+                <Stack align={"center"} justify={"center"} direction={"row"}>
+                  <Link href="https://github.com/twister-dev">
                     <Image src="/github.svg" alt="github" borderRadius="full" />
-                </Link>
-                <Link href="https://twitter.com/youjustwin42">
-                  <Image src="/twitter.svg" alt="twitter" borderRadius="full" />
-                </Link>
-              </Stack>
-            </Box>
+                  </Link>
+                  <Link href="https://twitter.com/youjustwin42">
+                    <Image
+                      src="/twitter.svg"
+                      alt="twitter"
+                      borderRadius="full"
+                    />
+                  </Link>
+                </Stack>
+              </Box>
             </Flex>
             <Flex ml="80px">
               <Box
@@ -379,7 +405,7 @@ const LandingPage = (props) => {
                 </Text>
                 <Stack align={"center"} justify={"center"} direction={"row"}>
                   <Link href="https://github.com/swicksystems">
-                      <Image src="/github.svg" alt="github" borderRadius="full" />
+                    <Image src="/github.svg" alt="github" borderRadius="full" />
                   </Link>
                 </Stack>
               </Box>
@@ -388,34 +414,41 @@ const LandingPage = (props) => {
           <Flex justifyContent="center" alignItems="center" mt="20px">
             <Flex mr="80px">
               <Box
-              maxW={"320px"}
-              w={"full"}
-              rounded={"lg"}
-              pr={15}
-              pl={15}
-              textAlign={"center"}
-              alignItems="center"
-              justifyContent="center"
-            >
-              <Avatar size={"xl"} src="/u_aayush.png" alt="Twister Dev" />
-              <Text fontWeight={600} color={"gray.500"} mb={1}>
-                aayush4vedi
-              </Text>
-              <Stack align={"center"} justify={"center"} direction={"row"}>
-                <Link href="https://github.com/aayush4vedi">
+                maxW={"320px"}
+                w={"full"}
+                rounded={"lg"}
+                pr={15}
+                pl={15}
+                textAlign={"center"}
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Avatar size={"xl"} src="/u_aayush.png" alt="Twister Dev" />
+                <Text fontWeight={600} color={"gray.500"} mb={1}>
+                  aayush4vedi
+                </Text>
+                <Stack align={"center"} justify={"center"} direction={"row"}>
+                  <Link href="https://github.com/aayush4vedi">
                     <Image src="/github.svg" alt="github" borderRadius="full" />
-                </Link>
-                <Link href="https://twitter.com/aayush4vedi">
-                  <Image src="/twitter.svg" alt="twitter" borderRadius="full" />
-                </Link>
-                <Link href="https://www.linkedin.com/in/aayush-chaturvedi-bb7143116/">
-                  <Image src="/linkedin.svg" alt="linkedin" borderRadius="full" />
-                </Link>
-              </Stack>
-            </Box>
+                  </Link>
+                  <Link href="https://twitter.com/aayush4vedi">
+                    <Image
+                      src="/twitter.svg"
+                      alt="twitter"
+                      borderRadius="full"
+                    />
+                  </Link>
+                  <Link href="https://www.linkedin.com/in/aayush-chaturvedi-bb7143116/">
+                    <Image
+                      src="/linkedin.svg"
+                      alt="linkedin"
+                      borderRadius="full"
+                    />
+                  </Link>
+                </Stack>
+              </Box>
             </Flex>
             <Flex ml="80px">
-              
               <Box
                 maxW={"320px"}
                 w={"full"}
@@ -432,7 +465,11 @@ const LandingPage = (props) => {
                 </Text>
                 <Stack align={"center"} justify={"center"} direction={"row"}>
                   <Link href="https://www.linkedin.com/in/cedric-heidt/">
-                    <Image src="/linkedin.svg" alt="linkedin" borderRadius="full" />
+                    <Image
+                      src="/linkedin.svg"
+                      alt="linkedin"
+                      borderRadius="full"
+                    />
                   </Link>
                 </Stack>
               </Box>
