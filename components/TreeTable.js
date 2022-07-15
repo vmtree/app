@@ -11,7 +11,7 @@ const TreeTable = (props) => {
         <thead>
           <Tr>
             <Th>STATUS</Th>
-            <Th minW="150px">TREE NAME</Th>
+            <Th minW="150px">VRMC NAME</Th>
             <Th>CONTRACT ADDRESS</Th>
             <Th>CONTROLLER</Th>
             <Th >LINK PAYER</Th>
