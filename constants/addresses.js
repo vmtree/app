@@ -1,6 +1,6 @@
 // in a multi-chain future, these would first be indexed by chainId
 module.exports = {
-    arboristAddress: '0x029Bef63A9aD0FA15BD390fCb4FC8D22b8FD3249',
+    arboristAddress: '0x9eEF87dD05c10dF6604BAafB2F944fE087Fe095d',
     linkTokenAddress: '0x029Bef63A9aD0FA15BD390fCb4FC8D22b8FD3249',
     //hacky env key handling
     NEXT_PUBLIC_APP_ID: '6CF08Q5FQ7apoq4tcVbyVR3Lh1vFRktHpE5cYTki',
