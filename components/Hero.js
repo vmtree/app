@@ -80,7 +80,7 @@ const Hero = ({ handleVMTreeCreation }) => {
   function showSuccessToast() {
     toast({
           title: 'SUCCESS',
-          description: "Congrats! VMTree Created Successfully. Refresh page to see it.",
+          description: "Congrats! VRMC Created Successfully. Refresh page to see it.",
           status: 'success',
           duration: 9000,
           isClosable: true,
@@ -157,14 +157,14 @@ const Hero = ({ handleVMTreeCreation }) => {
           borderRadius={18}
           zIndex="0"
         >
-          Deploy A New VMTree
+          Deploy A New VRMC
         </Button>
 
         <Modal isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
           <ModalContent w="full">
             <ModalHeader justifyContent="center">
-              Deploy A New VMTree
+              Deploy A New VRMC
             </ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
@@ -192,7 +192,7 @@ const Hero = ({ handleVMTreeCreation }) => {
               </FormControl>
 
               <FormControl mt={4} isRequired>
-                <FormLabel>LINKs to Prefund the VMTree</FormLabel>
+                <FormLabel>LINKs to Prefund the VRMC</FormLabel>
                 <Input
                   placeholder="Enter #LINKs"
                   width="32em"

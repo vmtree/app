@@ -79,6 +79,7 @@ const ExploreVMTs = (props) => {
             color="#fff"
             _hover={{
               background: "#fff",
+              background-image: url("../.png");
               borderColor: "#365AD2",
               color: "#365AD2",
               borderWidth: "1.5px",
@@ -86,7 +87,7 @@ const ExploreVMTs = (props) => {
             }}
             zIndex="0"
           >
-            Load Existing VMTrees
+            Load VRMC
           </Button>
         </Flex>
         {/* <Stack ml="2em" mr="2em">
@@ -116,17 +117,17 @@ const ExploreVMTs = (props) => {
         />
       <Flex>
         <Text fontSize="xl" ml="5px" fontWeight="bold" mb="10px">
-          Explore VMTs
+          Explore VRMC
         </Text>
       </Flex>
 
       <TableContainer>
       <Table variant='simple' mb="20px">
-        <TableCaption fontSize="xs" color="gray.300">List of VMTrees Deployed</TableCaption>
+        <TableCaption fontSize="xs" color="gray.300">VRMC Completed</TableCaption>
         <Thead>
           <Trh>
             <Th>STATUS</Th>
-            <Th>TREE NAME</Th>
+            <Th>VRMC NAME</Th>
             <Th>CONTRACT ADDRESS</Th>
             <Th>CONTROLLER</Th>
             <Th>LINK PAYER</Th>
